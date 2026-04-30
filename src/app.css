@@ -24,7 +24,6 @@ body {
     background-color: var(--primary-bg-green);
     font-family: 'Inter', sans-serif;
     color: var(--text-main);
-    min-height: 100vh;
     background-image:
         radial-gradient(circle at top left, rgba(184, 243, 106, 0.16), transparent 32%),
         radial-gradient(circle at bottom right, rgba(126, 207, 65, 0.14), transparent 28%),
@@ -36,21 +35,24 @@ a {
     text-decoration: none;
 }
 
+section {
+    height: 100vh;
+}
+
 .page-shell {
-    min-height: 100vh;
     padding: 32px;
 }
 
-#intro_screen {
+/* #intro_screen {
     min-height: calc(100vh - 64px);
-}
+} */
 
 .hero {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
     gap: 32px;
     align-items: center;
-    min-height: calc(100vh - 64px);
+    /* min-height: calc(100vh - 64px); */
 }
 
 .hero-copy {
