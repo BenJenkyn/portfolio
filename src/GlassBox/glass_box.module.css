@@ -1,0 +1,38 @@
+.glass_background {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    padding: 1rem; 
+    display: flex;
+    flex-direction: column;
+}
+
+.link_section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.website_link { 
+    border-radius: 1rem;
+    border-color: #FFFFFF;
+    border-style: solid;
+    padding: 0.75rem;
+    text-decoration: none; 
+    display: inline-flex; 
+    align-items: flex-end;
+    gap: 0.35rem;
+    line-height: 1;
+    cursor: pointer; 
+}
+
+.website_link svg {
+    display: block;
+}
+
+.website_link:hover {
+    filter: drop-shadow();
+}
