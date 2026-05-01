@@ -1,4 +1,4 @@
-import './app.css';
+import styles from './app.module.css';
 import type { Component } from 'solid-js';
 import Navbar from './Navbar/Navbar';
 
@@ -6,12 +6,12 @@ const sections = ['Split Element', 'Ontario Tech', 'Personal Projects'];
 
 const App: Component = () => {
   return (
-    <main class="page-shell">
-      <section id="intro_screen" class="hero">
-        <div class="hero-copy">
-          <h1>Ben Jenkyn</h1>
-          <p class="eyebrow">Software Developer</p>
-          <p class="lede">
+    <main class={styles.pageShell}>
+      <section id="intro_screen" class={`${styles.section} ${styles.hero}`}>
+        <div class={styles.heroCopy}>
+          <h1 class={styles.heroTitle}>Ben Jenkyn</h1>
+          <p class={styles.eyebrow}>Software Developer</p>
+          <p class={styles.lede}>
             I build polished, accessible web experiences with a clean visual edge and a strong focus on usability.
           </p>
         </div>
@@ -33,14 +33,14 @@ const App: Component = () => {
           </div>
         </div> */}
       </section>
-      <section id="split_element" class="work_section">
-          <h2>Split Element Inc.</h2>
+        <section id="split_element" class={`${styles.section} ${styles.workSection}`}>
+          <h2 class={styles.sectionTitle}>Split Element Inc.</h2>
       </section>
-      <section id="ontario_tech" class="work_section">
-          <h2>Ontario Tech University</h2>
+        <section id="ontario_tech" class={`${styles.section} ${styles.workSection}`}>
+          <h2 class={styles.sectionTitle}>Ontario Tech University</h2>
       </section>
-      <section id="personal_projects" class="work_section">
-          <h2>Personal Projects</h2>
+        <section id="personal_projects" class={`${styles.section} ${styles.workSection}`}>
+          <h2 class={styles.sectionTitle}>Personal Projects</h2>
       </section>
       <Navbar/>
     </main>
