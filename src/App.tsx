@@ -33,13 +33,13 @@ const App: Component = () => {
           </div>
         </div> */}
       </section>
-      <section id="split_element">
+      <section id="split_element" class="work_section">
           <h2>Split Element Inc.</h2>
       </section>
-      <section id="ontario_tech">
+      <section id="ontario_tech" class="work_section">
           <h2>Ontario Tech University</h2>
       </section>
-      <section id="personal_projects">
+      <section id="personal_projects" class="work_section">
           <h2>Personal Projects</h2>
       </section>
       <Navbar/>

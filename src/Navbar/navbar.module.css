@@ -16,7 +16,7 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.24);
     position: fixed;
     overflow: hidden;
-    bottom: 2rem;
+    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
