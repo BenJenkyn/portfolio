@@ -9,6 +9,29 @@
     flex-direction: column;
 }
 
+.glass_background h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.project_title {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-soft);
+}
+
+.tech_stack_title {
+    margin: 0 0 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-soft);
+}
+
 .link_section {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -35,4 +58,46 @@
 
 .website_link:hover {
     filter: drop-shadow();
+}
+
+.tech_stack_section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 1rem;
+    align-items: center;
+    justify-items: center;
+    padding: 0.5rem 0;
+}
+
+.tech_stack_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.tech_stack_item:hover {
+    transform: scale(1.05);
+}
+
+.tech_stack_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+}
+
+.tech_stack_icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.tech_stack_font {
+    font-size: 0.875rem;
+    margin: 0;
+    font-weight: 500;
 }

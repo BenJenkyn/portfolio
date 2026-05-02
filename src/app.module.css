@@ -1,5 +1,5 @@
 .section {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .pageShell {
@@ -11,6 +11,7 @@
     grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
     gap: 32px;
     align-items: center;
+    height: 100vh
 }
 
 .heroCopy {

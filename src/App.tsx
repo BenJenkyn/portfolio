@@ -2,6 +2,8 @@ import styles from './app.module.css';
 import type { Component } from 'solid-js';
 import Navbar from './Navbar/Navbar';
 import GlassBox from './GlassBox/GlassBox';
+import { BiLogosTypescript, BiLogosHtml5, BiLogosCss3 } from 'solid-icons/bi'
+import { SiJquery } from 'solid-icons/si'
 
 const sections = ['Split Element', 'Ontario Tech', 'Personal Projects'];
 
@@ -37,9 +39,15 @@ const App: Component = () => {
         <section id="split_element" class={`${styles.section} ${styles.workSection}`}>
           <h2 class={styles.sectionTitle}>Split Element Inc.</h2>
           <GlassBox 
-            projectName='Lunach-a-Build Adventure'
+            projectName='Lunch-a-Build Adventure'
             projectDescription='The project has been taken down so please see this wayback machine link for reference. [MORE DESCRIPTION HERE]'
             websiteLink='https://web.archive.org/web/20240812174437/https://www.lunchabuildadventure.com/'
+            techStack={[
+              { icon: <BiLogosTypescript size="32px"/>, name: "TypeScript" },
+              { icon: <SiJquery size="32px"/>, name: "jQuery" },
+              { icon: <BiLogosHtml5 size="32px"/>, name: "HTML" },
+              { icon: <BiLogosCss3 size="32px"/>, name: "CSS" },
+            ]}
           />
       </section>
         <section id="ontario_tech" class={`${styles.section} ${styles.workSection}`}>
