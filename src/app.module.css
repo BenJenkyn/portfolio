@@ -40,6 +40,7 @@
     font-size: clamp(3.2rem, 8vw, 6.75rem);
     line-height: 0.95;
     letter-spacing: -0.06em;
+    padding-bottom: 15px;
 }
 
 .lede {
@@ -126,6 +127,12 @@
         linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 32px 32px;
     opacity: 0.45;
+}
+
+.glass_box_section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px
 }
 
 .visualOrb {
