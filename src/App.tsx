@@ -5,8 +5,6 @@ import GlassBox from './GlassBox/GlassBox';
 import { BiLogosTypescript, BiLogosHtml5, BiLogosCss3 } from 'solid-icons/bi'
 import { SiJquery } from 'solid-icons/si'
 
-const sections = ['Split Element', 'Ontario Tech', 'Personal Projects'];
-
 const App: Component = () => {
   return (
     <main class={styles.pageShell}>
@@ -18,45 +16,28 @@ const App: Component = () => {
             I build polished, accessible web experiences with a clean visual edge and a strong focus on usability.
           </p>
         </div>
-
-        {/* <div class="hero-visual" aria-hidden="true">
-          <div class="visual-orb visual-orb-one"></div>
-          <div class="visual-orb visual-orb-two"></div>
-          <div class="info-card info-card-top">
-            <span class="card-label">Currently focused on</span>
-            <strong>Turning figma concepts into sharp, responsive interfaces.</strong>
-          </div>
-          <div class="info-card info-card-bottom">
-            <span class="card-label">Sections</span>
-            <div class="stack-row">
-              {sections.map((item) => (
-                <span>{item}</span>
-              ))}
-            </div>
-          </div>
-        </div> */}
       </section>
-        <section id="split_element" class={`${styles.section} ${styles.workSection}`}>
-          <h2 class={styles.sectionTitle}>Split Element Inc.</h2>
-          <GlassBox 
-            projectName='Lunch-a-Build Adventure'
-            projectDescription='The project has been taken down so please see this wayback machine link for reference. [MORE DESCRIPTION HERE]'
-            websiteLink='https://web.archive.org/web/20240812174437/https://www.lunchabuildadventure.com/'
-            techStack={[
-              { icon: <BiLogosTypescript size="32px"/>, name: "TypeScript" },
-              { icon: <SiJquery size="32px"/>, name: "jQuery" },
-              { icon: <BiLogosHtml5 size="32px"/>, name: "HTML" },
-              { icon: <BiLogosCss3 size="32px"/>, name: "CSS" },
-            ]}
-          />
+      <section id="work_projects" class={`${styles.section} ${styles.workSection}`}>
+        <h2 class={styles.sectionTitle}>Work Projects</h2>
+        <GlassBox
+          projectName='Lunch-a-Build Adventure'
+          projectDescription='The project has been taken down so please see this wayback machine link for reference. [MORE DESCRIPTION HERE]'
+          websiteLink='https://web.archive.org/web/20240812174437/https://www.lunchabuildadventure.com/'
+          techStack={[
+            { icon: <BiLogosTypescript size="32px" />, name: "TypeScript" },
+            { icon: <SiJquery size="32px" />, name: "jQuery" },
+            { icon: <BiLogosHtml5 size="32px" />, name: "HTML" },
+            { icon: <BiLogosCss3 size="32px" />, name: "CSS" },
+          ]}
+        />
       </section>
-        <section id="ontario_tech" class={`${styles.section} ${styles.workSection}`}>
-          <h2 class={styles.sectionTitle}>Ontario Tech University</h2>
+      <section id="school_projects" class={`${styles.section} ${styles.workSection}`}>
+        <h2 class={styles.sectionTitle}>School Projects</h2>
       </section>
-        <section id="personal_projects" class={`${styles.section} ${styles.workSection}`}>
-          <h2 class={styles.sectionTitle}>Personal Projects</h2>
+      <section id="personal_projects" class={`${styles.section} ${styles.workSection}`}>
+        <h2 class={styles.sectionTitle}>Personal Projects</h2>
       </section>
-      <Navbar/>
+      <Navbar />
     </main>
   );
 };

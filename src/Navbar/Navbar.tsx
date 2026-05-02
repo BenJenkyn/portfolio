@@ -4,9 +4,9 @@ import styles from './navbar.module.css'
 const Navbar: Component = () => {
     return (
         <nav class={styles.navbar}>
-            <a href="#split_element" class={styles.list_item}>Split Element</a>
-            <a href='#ontario_tech' class={styles.list_item}>Ontario Tech</a>
-            <a href='#personal_projects' class={styles.list_item}>Personal Projects</a>
+            <a href="#work_projects" class={styles.list_item}>Work</a>
+            <a href='#school_projects' class={styles.list_item}>School</a>
+            <a href='#personal_projects' class={styles.list_item}>Personal</a>
         </nav>
     )
 }

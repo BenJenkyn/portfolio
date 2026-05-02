@@ -32,8 +32,8 @@ const GlassBox: Component<GlassBoxProps> = (props) => {
                 </div>
             </div>
             <div class={styles.link_section}>
-                {props?.websiteLink && <a href={props.websiteLink} class={styles.website_link}> <OcGlobe3/> Website <OcLinkexternal3/> </a>}
-                {props?.githubLink && <a href={props.githubLink} class={styles.website_link}> <OcMarkgithub3/> GitHub <OcLinkexternal3/> </a>}
+                {props?.websiteLink && <a href={props.websiteLink} class={styles.website_link} target="_blank" rel="noopener noreferrer"> <OcGlobe3/> Website <OcLinkexternal3/> </a>}
+                {props?.githubLink && <a href={props.githubLink} class={styles.website_link} target="_blank" rel="noopener noreferrer"> <OcMarkgithub3/> GitHub <OcLinkexternal3/> </a>}
             </div>
         </div>
     );
