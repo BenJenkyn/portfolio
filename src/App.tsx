@@ -77,8 +77,7 @@ const App: Component = () => {
           <GlassBox
             projectName='Beatles Through Data'
             projectDescription='This project was for my scientific data analysis class [DESCRIPTION HERE]'
-            websiteLink='https://github.com/BenJenkyn/beatles-through-data/blob/main/assignment1.ipynb'
-            githubLink='https://github.com/BenJenkyn/beatles-through-data'
+            githubLink='https://github.com/BenJenkyn/beatles-through-data/blob/main/assignment1.ipynb'
             techStack={[
               { icon: <BiLogosPython size="32px" />, name: "Python" },
               { icon: <SiJupyter size="32px" />, name: "Jupyter Notebook" },
