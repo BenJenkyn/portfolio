@@ -11,8 +11,15 @@ import {
   BiLogosNodejs,
   BiLogosFirebase,
   BiLogosJquery,
+  BiLogosPython,
 } from 'solid-icons/bi'
-import { SiStrapi } from 'solid-icons/si'
+import { 
+  SiStrapi, 
+  SiGodotengine, 
+  SiUnity, 
+  SiSvelte,
+  SiJupyter
+} from 'solid-icons/si'
 
 const App: Component = () => {
   return (
@@ -57,9 +64,51 @@ const App: Component = () => {
       </section>
       <section id="school_projects" class={`${styles.section} ${styles.workSection}`}>
         <h2 class={styles.sectionTitle}>School Projects</h2>
+        <div class={styles.glass_box_section}>
+          <GlassBox
+            projectName='Hollow Head (Video Game)'
+            projectDescription='This was the final project for my Interactive Media class where we made a video game in whatever way we wanted as long as we used Godot. If you want to play it in the browser you will need to be running it on a desktop. [DESCRIPTION HERE]'
+            websiteLink='https://spetsai.itch.io/hollow-head'
+            githubLink='https://github.com/BenJenkyn/interactive-media-final-project'
+            techStack={[
+              { icon: <SiGodotengine size="32px" />, name: "Godot" },
+            ]}
+          />
+          <GlassBox
+            projectName='Beatles Through Data'
+            projectDescription='This project was for my scientific data analysis class [DESCRIPTION HERE]'
+            websiteLink='https://github.com/BenJenkyn/beatles-through-data/blob/main/assignment1.ipynb'
+            githubLink='https://github.com/BenJenkyn/beatles-through-data'
+            techStack={[
+              { icon: <BiLogosPython size="32px" />, name: "Python" },
+              { icon: <SiJupyter size="32px" />, name: "Jupyter Notebook" },
+            ]}
+          />
+        </div>
       </section>
       <section id="personal_projects" class={`${styles.section} ${styles.workSection}`}>
         <h2 class={styles.sectionTitle}>Personal Projects</h2>
+        <div class={styles.glass_box_section}>
+          <GlassBox
+            projectName='Exterminathan (Video Game)'
+            projectDescription='This was a project that me and a team of 2 others built for the TOJam 2025 game jam. If you want to play it in the browser you will need to be running it on a desktop. [DESCRIPTION HERE]'
+            websiteLink='https://spetsai.itch.io/exterminathan'
+            githubLink='https://github.com/BenJenkyn/Croissant-Crew'
+            techStack={[
+              { icon: <SiUnity size="32px" />, name: "Unity" },
+            ]}
+          />
+          <GlassBox
+            projectName='Wordle Assist'
+            projectDescription='This was a project I built because I was having a lot of fun with Wordle at the time and wanted to try out a web framework I had heard about called Svelte, so this project combined the two interests. The basic premise of this website is that it helps you to cheat at Wordle.'
+            websiteLink='https://wordle-guesser-76749.web.app/'
+            githubLink='https://github.com/BenJenkyn/wordle_guesser'
+            techStack={[
+              { icon: <SiSvelte size="32px" />, name: "Svelte" },
+              { icon: <BiLogosTypescript size="32px" />, name: "TypeScript" },
+            ]}
+          />
+        </div>
       </section>
       <Navbar />
     </main>
