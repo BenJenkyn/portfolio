@@ -1,4 +1,5 @@
 import { Component, createSignal, onMount, onCleanup, createEffect, For } from "solid-js";
+import { BiSolidHome } from "solid-icons/bi";
 import styles from './navbar.module.css'
 
 type Section = 'work' | 'school' | 'personal';
@@ -21,6 +22,7 @@ const Navbar: Component = () => {
   let isProgrammaticScroll = false;
   let navRef: HTMLElement | undefined;
   let itemRefs: Record<Section, HTMLElement> = {} as Record<Section, HTMLElement>;
+  let homeRef: HTMLElement | undefined;
   let scrollTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   const scrollToSection = (targetId: string, sectionId: Section) => {
@@ -41,19 +43,33 @@ const Navbar: Component = () => {
   const updateIndicator = () => {
     const active = activeSection();
     const nav = navRef;
-    if (active && nav) {
-      const activeElement = itemRefs[active];
-      if (activeElement) {
-        const itemRect = activeElement.getBoundingClientRect();
+    if (nav) {
+      if (active) {
+        const activeElement = itemRefs[active];
+        if (activeElement) {
+          const itemRect = activeElement.getBoundingClientRect();
+          const navRect = nav.getBoundingClientRect();
+          setIndicatorStyle({
+            left: `${itemRect.left - navRect.left}px`,
+            width: `${itemRect.width}px`,
+          });
+          return;
+        }
+      }
+
+      // fallback: highlight Home when no active section
+      if (homeRef) {
+        const itemRect = homeRef.getBoundingClientRect();
         const navRect = nav.getBoundingClientRect();
         setIndicatorStyle({
           left: `${itemRect.left - navRect.left}px`,
           width: `${itemRect.width}px`,
         });
+        return;
       }
-    } else {
-      setIndicatorStyle({ left: '0px', width: '0px' });
     }
+
+    setIndicatorStyle({ left: '0px', width: '0px' });
   };
 
   onMount(() => {
@@ -92,10 +108,26 @@ const Navbar: Component = () => {
 
   return (
     <nav class={styles.navbar} ref={navRef}>
+      <button
+        ref={(el) => (homeRef = el)}
+        class={`${styles.list_item} ${activeSection() === null ? styles.active : ''}`}
+        onClick={() => {
+          setActiveSection(null);
+          isProgrammaticScroll = true;
+          if (scrollTimeoutId) clearTimeout(scrollTimeoutId);
+          scrollTimeoutId = setTimeout(() => {
+            isProgrammaticScroll = false;
+          }, 1000);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        aria-label="Go to home"
+      >
+        <BiSolidHome style={{ width: '18px', height: '18px' }} aria-hidden="true" />
+      </button>
       <div class={styles.indicatorBackground} style={{
         left: indicatorStyle().left,
         width: indicatorStyle().width,
-        opacity: activeSection() ? '1' : '0',
+        opacity: indicatorStyle().width !== '0px' ? '1' : '0',
       }} />
       <For each={sections}>
         {(section) => (
