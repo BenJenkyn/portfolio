@@ -3,9 +3,9 @@
     align-items: center;
     justify-content: flex-start;
     gap: 0;
-    width: min(calc(100% - 2rem), 42rem);
+    width: calc(100% - 1rem);
     margin: 0 auto;
-    padding: 0.75rem;
+    padding: 0.5rem;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 999px;
     background:
@@ -35,8 +35,8 @@
 
 .indicatorBackground {
     position: absolute;
-    top: 0.75rem;
-    height: calc(100% - 1.5rem);
+    top: 0.6rem;
+    height: calc(100% - 1.2rem);
     border-radius: 999px;
     background: linear-gradient(135deg, rgba(184, 243, 106, 0.2), rgba(116, 214, 255, 0.16));
     border: 1px solid rgba(184, 243, 106, 0.3);
@@ -49,8 +49,8 @@
     position: relative;
     z-index: 1;
     flex: 1;
-        min-width: 0;
-    padding: 0.9rem 1.25rem;
+    min-width: 0;
+    padding: 0.6rem 0.8rem;
     border-radius: 999px;
     border: none;
     background: transparent;
@@ -58,7 +58,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.95rem;
+    font-size: 0.82rem;
     font-weight: 600;
     letter-spacing: 0.02em;
     cursor: pointer;
@@ -66,20 +66,20 @@
     white-space: nowrap;
 }
 
-@media (max-width: 380px) {
+@media (min-width: 381px) {
     .navbar {
-        width: calc(100% - 1rem);
-        padding: 0.5rem;
+        width: min(calc(100% - 2rem), 42rem);
+        padding: 0.75rem;
     }
 
     .list_item {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.82rem;
+        padding: 0.9rem 1.25rem;
+        font-size: 0.95rem;
     }
 
     .indicatorBackground {
-        top: 0.6rem;
-        height: calc(100% - 1.2rem);
+        top: 0.75rem;
+        height: calc(100% - 1.5rem);
     }
 }
 
