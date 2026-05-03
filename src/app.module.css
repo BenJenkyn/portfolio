@@ -345,4 +345,8 @@
     .infoCardBottom {
         max-width: 320px;
     }
+
+    .glass_box_section {
+        flex-direction: row;
+    }
 }
