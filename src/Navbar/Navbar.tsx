@@ -27,17 +27,19 @@ const Navbar: Component = () => {
   let homeRef: HTMLElement | undefined;
   let scrollTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
+  const beginProgrammaticScroll = () => {
+    isProgrammaticScroll = true;
+    if (scrollTimeoutId) clearTimeout(scrollTimeoutId);
+    scrollTimeoutId = setTimeout(() => {
+      isProgrammaticScroll = false;
+    }, 1000);
+  };
+
   const scrollToSection = (targetId: string, sectionId: Section) => {
     const element = document.getElementById(targetId);
     if (element) {
       setActiveSection(sectionId);
-      isProgrammaticScroll = true;
-
-      if (scrollTimeoutId) clearTimeout(scrollTimeoutId);
-      scrollTimeoutId = setTimeout(() => {
-        isProgrammaticScroll = false;
-      }, 1000);
-
+      beginProgrammaticScroll();
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -59,7 +61,6 @@ const Navbar: Component = () => {
         }
       }
 
-      // fallback: highlight Home when no active section
       if (homeRef) {
         const itemRect = homeRef.getBoundingClientRect();
         const navRect = nav.getBoundingClientRect();
@@ -118,27 +119,23 @@ const Navbar: Component = () => {
 
   return (
     <nav class={styles.navbar} ref={navRef}>
+      <div class={styles.indicatorBackground} style={{
+        left: indicatorStyle().left,
+        width: indicatorStyle().width,
+        opacity: indicatorStyle().width !== '0px' ? '1' : '0',
+      }} />
       <button
         ref={(el) => (homeRef = el)}
         class={`${styles.list_item} ${activeSection() === null ? styles.active : ''}`}
         onClick={() => {
           setActiveSection(null);
-          isProgrammaticScroll = true;
-          if (scrollTimeoutId) clearTimeout(scrollTimeoutId);
-          scrollTimeoutId = setTimeout(() => {
-            isProgrammaticScroll = false;
-          }, 1000);
+          beginProgrammaticScroll();
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         aria-label="Go to home"
       >
         <BiSolidHome style={{ width: '18px', height: '18px' }} aria-hidden="true" />
       </button>
-      <div class={styles.indicatorBackground} style={{
-        left: indicatorStyle().left,
-        width: indicatorStyle().width,
-        opacity: indicatorStyle().width !== '0px' ? '1' : '0',
-      }} />
       <For each={sections}>
         {(section) => (
           <button
