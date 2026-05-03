@@ -1,12 +1,27 @@
 .glass_background {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)),
+        linear-gradient(180deg, rgba(15, 22, 16, 0.78), rgba(12, 18, 14, 0.9));
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 1rem;
-    padding: 1rem; 
+    padding: 1rem;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass_background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at top right, rgba(116, 214, 255, 0.12), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(184, 243, 106, 0.12), transparent 38%);
+    pointer-events: none;
 }
 
 .glass_background h3 {
@@ -20,7 +35,8 @@
     font-size: 1.25rem;
     font-weight: 600;
     text-transform: uppercase;
-    color: var(--text-soft);
+    letter-spacing: 0.06em;
+    color: #f7fbf3;
 }
 
 .tech_stack_title {
@@ -29,7 +45,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--text-soft);
+    color: rgba(245, 250, 242, 0.7);
 }
 
 .link_section {
@@ -37,19 +53,22 @@
     padding-bottom: 1rem;
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .website_link { 
-    border-radius: 1rem;
-    border-color: #FFFFFF;
-    border-style: solid;
-    padding: 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 0.7rem 0.95rem;
     text-decoration: none; 
     display: inline-flex; 
-    align-items: flex-end;
-    gap: 0.35rem;
+    align-items: center;
+    gap: 0.4rem;
     line-height: 1;
     cursor: pointer; 
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-main);
+    transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
 }
 
 .website_link svg {
@@ -57,7 +76,10 @@
 }
 
 .website_link:hover {
-    filter: drop-shadow();
+    transform: translateY(-1px);
+    border-color: rgba(183, 244, 106, 0.36);
+    background: rgba(183, 244, 106, 0.08);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
 }
 
 .tech_stack_section {
@@ -88,6 +110,8 @@
     justify-content: center;
     width: 48px;
     height: 48px;
+    color: var(--accent);
+    filter: drop-shadow(0 8px 20px rgba(184, 243, 106, 0.18));
 }
 
 .tech_stack_icon svg {
@@ -100,4 +124,5 @@
     font-size: 0.875rem;
     margin: 0;
     font-weight: 500;
+    color: rgba(245, 250, 242, 0.78);
 }
