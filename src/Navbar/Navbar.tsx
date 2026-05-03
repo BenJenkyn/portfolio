@@ -16,6 +16,8 @@ const sections: SectionConfig[] = [
   { id: 'personal', label: 'Personal', targetId: 'personal_projects' },
 ];
 
+const homeTargetId = 'intro_screen';
+
 const Navbar: Component = () => {
   const [activeSection, setActiveSection] = createSignal<Section | null>(null);
   const [indicatorStyle, setIndicatorStyle] = createSignal({ left: '0px', width: '0px' });
@@ -85,6 +87,11 @@ const Navbar: Component = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && !isProgrammaticScroll) {
+          if (entry.target.id === homeTargetId) {
+            setActiveSection(null);
+            return;
+          }
+
           const sectionConfig = sections.find(s => s.targetId === entry.target.id);
           if (sectionConfig) {
             setActiveSection(sectionConfig.id);
@@ -97,6 +104,9 @@ const Navbar: Component = () => {
       const element = document.getElementById(section.targetId);
       if (element) observer.observe(element);
     });
+
+    const homeElement = document.getElementById(homeTargetId);
+    if (homeElement) observer.observe(homeElement);
 
     onCleanup(() => {
       window.removeEventListener('resize', updateIndicator);
