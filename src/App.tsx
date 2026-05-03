@@ -12,6 +12,8 @@ import {
   BiLogosFirebase,
   BiLogosJquery,
   BiLogosPython,
+  BiLogosGithub,
+  BiLogosLinkedin,
 } from 'solid-icons/bi'
 import { 
   SiStrapi, 
@@ -31,6 +33,14 @@ const App: Component = () => {
           <p class={styles.lede}>
             I build polished, accessible web experiences with a clean visual edge and a strong focus on usability.
           </p>
+          <div class={styles.socialLinks}>
+            <a href="https://www.linkedin.com/in/benjamin-jenkyn/" target="linkedin" rel="noopener noreferrer" class={styles.socialLink} aria-label="LinkedIn">
+              <BiLogosLinkedin size="24px" />
+            </a>
+            <a href="https://github.com/BenJenkyn" target="_blank" rel="noopener noreferrer" class={styles.socialLink} aria-label="GitHub">
+              <BiLogosGithub size="24px" />
+            </a>
+          </div>
         </div>
       </section>
       <section id="work_projects" class={`${styles.section} ${styles.workSection}`}>
