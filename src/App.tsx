@@ -43,6 +43,28 @@ const App: Component = () => {
             </a>
           </div>
         </div>
+        <div class={styles.heroVisual} aria-hidden="true">
+          <div class={styles.solarSystem}>
+            <div class={styles.solarGlow} />
+            <div class={styles.sun} />
+            <div class={styles.orbitSlow}>
+              <span class={`${styles.planet} ${styles.planetOne}`} />
+            </div>
+            <div class={styles.orbitMedium}>
+              <span class={`${styles.planet} ${styles.planetTwo}`} />
+            </div>
+            <div class={styles.orbitFast}>
+              <span class={`${styles.planet} ${styles.planetThree}`} />
+            </div>
+            <div class={styles.stars}>
+              <span class={styles.starA} />
+              <span class={styles.starB} />
+              <span class={styles.starC} />
+              <span class={styles.starD} />
+              <span class={styles.starE} />
+            </div>
+          </div>
+        </div>
       </section>
       <section id="work_projects" class={`${styles.section} ${styles.workSection}`}>
         <h2 class={styles.sectionTitle}>Work Projects</h2>
