@@ -47,14 +47,26 @@ const App: Component = () => {
           <div class={styles.solarSystem}>
             <div class={styles.solarGlow} />
             <div class={styles.sun} />
-            <div class={styles.orbitSlow}>
+            <div class={styles.orbitOne}>
               <span class={`${styles.planet} ${styles.planetOne}`} />
             </div>
-            <div class={styles.orbitMedium}>
+            <div class={styles.orbitTwo}>
               <span class={`${styles.planet} ${styles.planetTwo}`} />
             </div>
-            <div class={styles.orbitFast}>
+            <div class={styles.orbitThree}>
               <span class={`${styles.planet} ${styles.planetThree}`} />
+            </div>
+            <div class={styles.orbitFour}>
+              <span class={`${styles.planet} ${styles.planetFour}`} />
+            </div>
+            <div class={styles.orbitFive}>
+              <span class={`${styles.planet} ${styles.planetFive}`} />
+            </div>
+            <div class={styles.orbitSix}>
+              <span class={`${styles.planet} ${styles.planetSix}`} />
+            </div>
+            <div class={styles.orbitSeven}>
+              <span class={`${styles.planet} ${styles.planetSeven}`} />
             </div>
             <div class={styles.stars}>
               <span class={styles.starA} />
