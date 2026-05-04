@@ -1,4 +1,5 @@
 import styles from './app.module.css';
+import solarStyles from './solar_system.module.css';
 import type { Component } from 'solid-js';
 import Navbar from './Navbar/Navbar';
 import GlassBox from './GlassBox/GlassBox';
@@ -43,37 +44,37 @@ const App: Component = () => {
             </a>
           </div>
         </div>
-        <div class={styles.heroVisual} aria-hidden="true">
-          <div class={styles.solarSystem}>
-            <div class={styles.solarGlow} />
-            <div class={styles.sun} />
-            <div class={styles.orbitOne}>
-              <span class={`${styles.planet} ${styles.planetOne}`} />
+        <div class={solarStyles.heroVisual} aria-hidden="true">
+          <div class={solarStyles.solarSystem}>
+            <div class={solarStyles.solarGlow} />
+            <div class={solarStyles.sun} />
+            <div class={solarStyles.orbitOne}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetOne}`} />
             </div>
-            <div class={styles.orbitTwo}>
-              <span class={`${styles.planet} ${styles.planetTwo}`} />
+            <div class={solarStyles.orbitTwo}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetTwo}`} />
             </div>
-            <div class={styles.orbitThree}>
-              <span class={`${styles.planet} ${styles.planetThree}`} />
+            <div class={solarStyles.orbitThree}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetThree}`} />
             </div>
-            <div class={styles.orbitFour}>
-              <span class={`${styles.planet} ${styles.planetFour}`} />
+            <div class={solarStyles.orbitFour}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetFour}`} />
             </div>
-            <div class={styles.orbitFive}>
-              <span class={`${styles.planet} ${styles.planetFive}`} />
+            <div class={solarStyles.orbitFive}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetFive}`} />
             </div>
-            <div class={styles.orbitSix}>
-              <span class={`${styles.planet} ${styles.planetSix}`} />
+            <div class={solarStyles.orbitSix}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetSix}`} />
             </div>
-            <div class={styles.orbitSeven}>
-              <span class={`${styles.planet} ${styles.planetSeven}`} />
+            <div class={solarStyles.orbitSeven}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetSeven}`} />
             </div>
-            <div class={styles.stars}>
-              <span class={styles.starA} />
-              <span class={styles.starB} />
-              <span class={styles.starC} />
-              <span class={styles.starD} />
-              <span class={styles.starE} />
+            <div class={solarStyles.stars}>
+              <span class={solarStyles.starA} />
+              <span class={solarStyles.starB} />
+              <span class={solarStyles.starC} />
+              <span class={solarStyles.starD} />
+              <span class={solarStyles.starE} />
             </div>
           </div>
         </div>
