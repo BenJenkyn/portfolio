@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    --primary-bg-green: #0f1610;
+    --surface: rgba(255, 255, 255, 0.07);
+    --surface-strong: rgba(255, 255, 255, 0.14);
+    --surface-glow: rgba(177, 243, 106, 0.12);
+    --text-main: #f5faf2;
+    --text-soft: rgba(245, 250, 242, 0.76);
+    --accent: #b7f46a;
+    --accent-deep: #74d84c;
+    --accent-warm: #ffcc6a;
+    --accent-cool: #74d6ff;
+    --border: rgba(255, 255, 255, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--primary-bg-green);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    background-image:
+        radial-gradient(circle at top left, rgba(184, 243, 106, 0.22), transparent 30%),
+        radial-gradient(circle at 82% 18%, rgba(116, 214, 255, 0.14), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(255, 204, 106, 0.12), transparent 26%),
+        linear-gradient(160deg, rgba(255, 255, 255, 0.04), transparent 38%),
+        linear-gradient(180deg, #101813 0%, #0f1610 100%);
+    background-attachment: fixed;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
