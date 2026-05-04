@@ -32,7 +32,7 @@ const App: Component = () => {
           <h1 class={styles.heroTitle}>Ben Jenkyn</h1>
           <p class={styles.eyebrow}>Software Developer</p>
           <p class={styles.lede}>
-            I build polished, accessible web experiences with a clean visual edge and a strong focus on usability.
+            Turning ideas into usable, well-built web apps from front-end to back-end
           </p>
           <div class={styles.socialLinks}>
             <a href="https://www.linkedin.com/in/benjamin-jenkyn/" target="linkedin" rel="noopener noreferrer" class={styles.socialLink} aria-label="LinkedIn">
