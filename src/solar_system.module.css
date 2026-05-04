@@ -1,25 +1,11 @@
 .heroVisual {
     position: relative;
     min-height: 390px;
-    border: 1px solid var(--border);
-    border-radius: 24px;
     overflow: hidden;
-    background:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
-        linear-gradient(180deg, rgba(9, 14, 10, 0.12), rgba(9, 14, 10, 0.24));
-    backdrop-filter: blur(14px);
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .heroVisual::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 32px 32px;
-    opacity: 0.32;
+    display: none;
 }
 
 .solarSystem {
