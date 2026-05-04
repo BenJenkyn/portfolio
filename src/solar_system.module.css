@@ -1,7 +1,18 @@
 .heroVisual {
     position: relative;
-    min-height: 390px;
+    min-height: 280px;
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    order: -1;
+}
+
+@media (min-width: 961px) {
+    .heroVisual {
+        min-height: 390px;
+        max-width: none;
+        order: unset;
+    }
 }
 
 .heroVisual::before {
