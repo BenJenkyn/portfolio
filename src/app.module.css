@@ -10,7 +10,6 @@
     position: relative;
     isolation: isolate;
     padding: 16px;
-    padding-bottom: calc(16px + 6rem);
 }
 
 .pageShell::before,
@@ -87,7 +86,7 @@
     background-clip: text;
 }
 
-/* .sectionTitle::after {
+.sectionTitle::after {
     content: '';
     display: block;
     width: 8rem;
@@ -97,7 +96,7 @@
     background: var(--accent);
     box-shadow: 0 8px 22px rgba(0,0,0,0.12);
     opacity: 1;
-} */
+}
 
 .lede {
     max-width: 34rem;
@@ -321,7 +320,6 @@
 @media (min-width: 641px) {
     .pageShell {
         padding: 20px;
-        padding-bottom: calc(20px + 6rem);
     }
 
     .heroVisual {
@@ -332,7 +330,6 @@
 @media (min-width: 961px) {
     .pageShell {
         padding: 32px;
-        padding-bottom: calc(32px + 6rem);
     }
 
     .hero {
