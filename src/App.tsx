@@ -20,7 +20,8 @@ import {
   SiGodotengine, 
   SiUnity, 
   SiSvelte,
-  SiJupyter
+  SiJupyter,
+  SiSolid
 } from 'solid-icons/si'
 
 const App: Component = () => {
@@ -114,6 +115,15 @@ const App: Component = () => {
             githubLink='https://github.com/BenJenkyn/wordle_guesser'
             techStack={[
               { icon: <SiSvelte size="32px" />, name: "Svelte" },
+              { icon: <BiLogosTypescript size="32px" />, name: "TypeScript" },
+            ]}
+          />
+          <GlassBox
+            projectName='This Portfolio'
+            projectDescription='I built this portfolio in part to show off some of the many projects I have worked on both in and out of my career but also as a fun challenge to myself to try and build something interesting. I wanted to use solid js because it seems like it offers the same type of performance benefits as Svelete while using JSX and being similar to React. I hope you liked it!'
+            githubLink='https://github.com/BenJenkyn/portfolio'
+            techStack={[
+              { icon: <SiSolid size="32px" />, name: "SolidJS" },
               { icon: <BiLogosTypescript size="32px" />, name: "TypeScript" },
             ]}
           />
