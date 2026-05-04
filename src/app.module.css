@@ -10,6 +10,7 @@
     position: relative;
     isolation: isolate;
     padding: 16px;
+    z-index: 10;
 }
 
 .pageShell::before,
@@ -28,7 +29,7 @@
     height: 18rem;
     top: -4rem;
     right: -6rem;
-    background: radial-gradient(circle, rgba(116, 214, 255, 0.14), transparent 66%);
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.14), transparent 66%);
 }
 
 .pageShell::after {
@@ -36,7 +37,7 @@
     height: 14rem;
     left: -5rem;
     bottom: 0;
-    background: radial-gradient(circle, rgba(255, 204, 106, 0.12), transparent 65%);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 65%);
 }
 
 .hero {
@@ -67,7 +68,7 @@
     line-height: 1.02;
     letter-spacing: -0.06em;
     padding-bottom: 0.08em;
-    background: linear-gradient(120deg, #f7fff2 10%, #b7f46a 45%, #74d6ff 82%);
+    background: linear-gradient(120deg, #f7fff2 10%, #3b82f6 45%, #0ea5e9 82%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -81,7 +82,7 @@
     letter-spacing: -0.06em;
     padding-bottom: 15px;
     color: transparent;
-    background: linear-gradient(120deg, #f6fbf1 0%, #b7f46a 50%, #ffcc6a 100%);
+    background: linear-gradient(120deg, #f6fbf1 0%, #3b82f6 50%, #0ea5e9 100%);
     -webkit-background-clip: text;
     background-clip: text;
 }
@@ -94,7 +95,7 @@
     margin: 1rem 0 1.2rem 0.75rem;
     border-radius: 999px;
     background: var(--accent);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
     opacity: 1;
 }
 
@@ -130,11 +131,11 @@
 }
 
 .socialLink:hover {
-    background: rgba(183, 244, 106, 0.12);
+    background: rgba(59, 130, 246, 0.12);
     border-color: var(--accent);
     color: var(--accent);
     transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(183, 244, 106, 0.15);
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.15);
 }
 
 .workSection {
@@ -193,110 +194,10 @@
     font-size: 0.95rem;
 }
 
-.heroVisual {
-    position: relative;
-    min-height: 390px;
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    overflow: hidden;
-    background:
-        linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
-        linear-gradient(180deg, rgba(9, 14, 10, 0.12), rgba(9, 14, 10, 0.24));
-    backdrop-filter: blur(14px);
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-.heroVisual::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 32px 32px;
-    opacity: 0.32;
-}
-
 .glass_box_section {
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
-
-.visualOrb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(2px);
-}
-
-.visualOrbOne {
-    width: 280px;
-    height: 280px;
-    top: 60px;
-    right: -40px;
-    background: radial-gradient(circle, rgba(184, 243, 106, 0.82), rgba(184, 243, 106, 0.08) 68%, transparent 72%);
-}
-
-.visualOrbTwo {
-    width: 180px;
-    height: 180px;
-    left: 40px;
-    bottom: 70px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.05) 70%, transparent 74%);
-}
-
-.infoCard {
-    position: absolute;
-    left: 16px;
-    right: 16px;
-    padding: 18px 20px;
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    background: rgba(13, 18, 10, 0.56);
-    backdrop-filter: blur(14px);
-}
-
-.infoCardTop,
-.infoCardBottom {
-    max-width: none;
-}
-
-.infoCardTop {
-    top: 28px;
-}
-
-.infoCardBottom {
-    bottom: 28px;
-    margin-left: auto;
-}
-
-.cardLabel {
-    display: block;
-    margin-bottom: 10px;
-    color: var(--text-soft);
-    font-size: 0.8rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-}
-
-.infoCard strong {
-    display: block;
-    font-size: 1.05rem;
-    line-height: 1.45;
-}
-
-.stackRow {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.stackRow span {
-    padding: 8px 10px;
-    border-radius: 999px;
-    background: var(--surface-strong);
-    color: var(--text-main);
-    font-size: 0.9rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -317,13 +218,22 @@
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .heroCopy,
+    .socialLinks {
+        animation: none;
+    }
+}
+
 @media (min-width: 641px) {
     .pageShell {
         padding: 20px;
     }
+}
 
-    .heroVisual {
-        min-height: 460px;
+@media (max-width: 640px) {
+    .pageShell {
+        padding: 20px;
     }
 }
 
@@ -356,11 +266,6 @@
         flex-direction: row;
     }
 
-    .heroVisual {
-        min-height: 560px;
-        border-radius: 32px;
-    }
-
     .pageShell::before {
         width: 28rem;
         height: 28rem;
@@ -373,19 +278,6 @@
         height: 22rem;
         left: -7rem;
         bottom: 4rem;
-    }
-
-    .infoCard {
-        left: 28px;
-        right: 28px;
-    }
-
-    .infoCardTop {
-        max-width: 360px;
-    }
-
-    .infoCardBottom {
-        max-width: 320px;
     }
 
     .glass_box_section {

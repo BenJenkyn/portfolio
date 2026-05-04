@@ -1,4 +1,5 @@
 import styles from './app.module.css';
+import solarStyles from './solar_system.module.css';
 import type { Component } from 'solid-js';
 import Navbar from './Navbar/Navbar';
 import GlassBox from './GlassBox/GlassBox';
@@ -20,7 +21,8 @@ import {
   SiGodotengine, 
   SiUnity, 
   SiSvelte,
-  SiJupyter
+  SiJupyter,
+  SiSolid
 } from 'solid-icons/si'
 
 const App: Component = () => {
@@ -31,7 +33,7 @@ const App: Component = () => {
           <h1 class={styles.heroTitle}>Ben Jenkyn</h1>
           <p class={styles.eyebrow}>Software Developer</p>
           <p class={styles.lede}>
-            I build polished, accessible web experiences with a clean visual edge and a strong focus on usability.
+            Turning ideas into usable, well-built web apps from front-end to back-end
           </p>
           <div class={styles.socialLinks}>
             <a href="https://www.linkedin.com/in/benjamin-jenkyn/" target="linkedin" rel="noopener noreferrer" class={styles.socialLink} aria-label="LinkedIn">
@@ -40,6 +42,40 @@ const App: Component = () => {
             <a href="https://github.com/BenJenkyn" target="_blank" rel="noopener noreferrer" class={styles.socialLink} aria-label="GitHub">
               <BiLogosGithub size="24px" />
             </a>
+          </div>
+        </div>
+        <div class={solarStyles.heroVisual} aria-hidden="true">
+          <div class={solarStyles.solarSystem}>
+            <div class={solarStyles.solarGlow} />
+            <div class={solarStyles.sun} />
+            <div class={solarStyles.orbitOne}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetOne}`} />
+            </div>
+            <div class={solarStyles.orbitTwo}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetTwo}`} />
+            </div>
+            <div class={solarStyles.orbitThree}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetThree}`} />
+            </div>
+            <div class={solarStyles.orbitFour}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetFour}`} />
+            </div>
+            <div class={solarStyles.orbitFive}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetFive}`} />
+            </div>
+            <div class={solarStyles.orbitSix}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetSix}`} />
+            </div>
+            <div class={solarStyles.orbitSeven}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetSeven}`} />
+            </div>
+            <div class={solarStyles.stars}>
+              <span class={solarStyles.starA} />
+              <span class={solarStyles.starB} />
+              <span class={solarStyles.starC} />
+              <span class={solarStyles.starD} />
+              <span class={solarStyles.starE} />
+            </div>
           </div>
         </div>
       </section>
@@ -114,6 +150,15 @@ const App: Component = () => {
             githubLink='https://github.com/BenJenkyn/wordle_guesser'
             techStack={[
               { icon: <SiSvelte size="32px" />, name: "Svelte" },
+              { icon: <BiLogosTypescript size="32px" />, name: "TypeScript" },
+            ]}
+          />
+          <GlassBox
+            projectName='This Portfolio'
+            projectDescription='I built this portfolio in part to show off some of the many projects I have worked on both in and out of my career but also as a fun challenge to myself to try and build something interesting. I wanted to use solid js because it seems like it offers the same type of performance benefits as Svelete while using JSX and being similar to React. I hope you liked it!'
+            githubLink='https://github.com/BenJenkyn/portfolio'
+            techStack={[
+              { icon: <SiSolid size="32px" />, name: "SolidJS" },
               { icon: <BiLogosTypescript size="32px" />, name: "TypeScript" },
             ]}
           />

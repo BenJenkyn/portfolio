@@ -1,0 +1,354 @@
+.heroVisual {
+    position: relative;
+    min-height: 390px;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
+        linear-gradient(180deg, rgba(9, 14, 10, 0.12), rgba(9, 14, 10, 0.24));
+    backdrop-filter: blur(14px);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.heroVisual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.32;
+}
+
+.solarSystem {
+    position: absolute;
+    inset: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.solarGlow {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.56) 0%, rgba(59, 130, 246, 0.3) 32%, rgba(14, 165, 233, 0.16) 58%, transparent 74%);
+    box-shadow: 0 0 38px rgba(59, 130, 246, 0.18), 0 0 90px rgba(14, 165, 233, 0.08);
+}
+
+.sun {
+    position: absolute;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 34% 32%, #fff7db 0%, #ffd97a 28%, #ffb833 58%, #c96a11 100%);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+        0 0 28px rgba(255, 204, 106, 0.5),
+        0 0 78px rgba(255, 204, 106, 0.22);
+    animation: sunPulse 6s ease-in-out infinite;
+    z-index: 2;
+}
+
+.orbitOne,
+.orbitTwo,
+.orbitThree,
+.orbitFour,
+.orbitFive,
+.orbitSix,
+.orbitSeven {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    animation: spinOrbit linear infinite;
+}
+
+.orbitOne {
+    width: min(30vw, 104px);
+    height: min(30vw, 104px);
+    animation-duration: 7s;
+    animation-delay: -1.2s;
+}
+
+.orbitTwo {
+    width: min(34vw, 118px);
+    height: min(34vw, 118px);
+    animation-duration: 20s;
+    animation-delay: -6s;
+}
+
+.orbitThree {
+    width: min(44vw, 150px);
+    height: min(44vw, 150px);
+    animation-duration: 13s;
+    animation-delay: -4.1s;
+}
+
+.orbitFour {
+    width: min(54vw, 180px);
+    height: min(54vw, 180px);
+    animation-duration: 16s;
+    animation-delay: -9.5s;
+}
+
+.orbitFive {
+    width: min(64vw, 210px);
+    height: min(64vw, 210px);
+    animation-duration: 15s;
+    animation-delay: -3.8s;
+}
+
+.orbitSix {
+    width: min(74vw, 240px);
+    height: min(74vw, 240px);
+    animation-duration: 34s;
+    animation-delay: -18s;
+}
+
+.orbitSeven {
+    width: min(84vw, 270px);
+    height: min(84vw, 270px);
+    animation-duration: 30s;
+    animation-delay: -11s;
+}
+
+.planet {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.planetOne {
+    width: 7px;
+    height: 7px;
+    background: linear-gradient(135deg, #d9d3ca, #9f978b 70%, #6d655a);
+    box-shadow: 0 0 10px rgba(211, 202, 186, 0.22);
+}
+
+.planetTwo {
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, #f6e2a8, #d7b46a 58%, #a87d3d);
+    box-shadow: 0 0 12px rgba(255, 220, 150, 0.22);
+}
+
+.planetThree {
+    width: 11px;
+    height: 11px;
+    background: radial-gradient(circle at 36% 34%, #8fd3ff 0%, #4a8ff0 40%, #1f4fa8 72%, #10306a 100%);
+    box-shadow: 0 0 14px rgba(116, 214, 255, 0.24);
+}
+
+.planetFour {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #d8a08b, #b95a44 58%, #7d2f24);
+    box-shadow: 0 0 11px rgba(217, 138, 114, 0.22);
+}
+
+.planetFive {
+    width: 18px;
+    height: 18px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 24%),
+        linear-gradient(135deg, #c39a62 0%, #a16f3f 28%, #e3bb7c 48%, #8c5f34 72%, #6b4526 100%);
+    box-shadow: 0 0 18px rgba(227, 187, 124, 0.18);
+}
+
+.planetSix {
+    width: 16px;
+    height: 16px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 26%),
+        linear-gradient(135deg, #f3d796 0%, #d8b46b 42%, #b98f46 72%, #8d6a2b 100%);
+    box-shadow: 0 0 16px rgba(216, 180, 107, 0.18);
+}
+
+.planetSeven {
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, #d7f8ff, #8de1f2 55%, #3ca6d8 100%);
+    box-shadow: 0 0 14px rgba(141, 225, 242, 0.2);
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+}
+
+.stars span {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    opacity: 0.5;
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+.starA {
+    width: 3px;
+    height: 3px;
+    top: 18%;
+    left: 18%;
+}
+
+.starB {
+    width: 2px;
+    height: 2px;
+    top: 26%;
+    right: 24%;
+    animation-delay: 0.8s;
+}
+
+.starC {
+    width: 3px;
+    height: 3px;
+    bottom: 24%;
+    left: 16%;
+    animation-delay: 1.4s;
+}
+
+.starD {
+    width: 2px;
+    height: 2px;
+    bottom: 18%;
+    right: 18%;
+    animation-delay: 2s;
+}
+
+.starE {
+    width: 4px;
+    height: 4px;
+    top: 46%;
+    left: 10%;
+    animation-delay: 1.2s;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .orbitOne,
+    .orbitTwo,
+    .orbitThree,
+    .orbitFour,
+    .orbitFive,
+    .orbitSix,
+    .orbitSeven,
+    .sun,
+    .stars span {
+        will-change: transform, opacity;
+    }
+}
+
+@keyframes spinOrbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sunPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes twinkle {
+    0%,
+    100% {
+        opacity: 0.32;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 0.92;
+        transform: scale(1.2);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .orbitOne,
+    .orbitTwo,
+    .orbitThree,
+    .orbitFour,
+    .orbitFive,
+    .orbitSix,
+    .orbitSeven,
+    .sun,
+    .stars span {
+        animation: none;
+    }
+}
+
+@media (min-width: 641px) {
+    .solarSystem {
+        inset: 16px;
+    }
+
+    .solarGlow {
+        width: 150px;
+        height: 150px;
+    }
+
+    .sun {
+        width: 92px;
+        height: 92px;
+    }
+
+    .orbitOne {
+        width: min(22vw, 120px);
+        height: min(22vw, 120px);
+    }
+
+    .orbitTwo {
+        width: min(30vw, 160px);
+        height: min(30vw, 160px);
+    }
+
+    .orbitThree {
+        width: min(38vw, 200px);
+        height: min(38vw, 200px);
+    }
+
+    .orbitFour {
+        width: min(46vw, 230px);
+        height: min(46vw, 230px);
+    }
+
+    .orbitFive {
+        width: min(54vw, 260px);
+        height: min(54vw, 260px);
+    }
+
+    .orbitSix {
+        width: min(62vw, 290px);
+        height: min(62vw, 290px);
+    }
+
+    .orbitSeven {
+        width: min(70vw, 320px);
+        height: min(70vw, 320px);
+    }
+    .heroVisual {
+        min-height: 460px;
+    }
+}
+
+@media (min-width: 961px) {
+    .heroVisual {
+        min-height: 560px;
+        border-radius: 32px;
+    }
+}
