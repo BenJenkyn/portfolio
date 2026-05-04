@@ -35,8 +35,8 @@
     width: 128px;
     height: 128px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.56) 0%, rgba(183, 244, 106, 0.3) 32%, rgba(116, 214, 255, 0.16) 58%, transparent 74%);
-    box-shadow: 0 0 38px rgba(183, 244, 106, 0.18), 0 0 90px rgba(116, 214, 255, 0.08);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.56) 0%, rgba(59, 130, 246, 0.3) 32%, rgba(14, 165, 233, 0.16) 58%, transparent 74%);
+    box-shadow: 0 0 38px rgba(59, 130, 246, 0.18), 0 0 90px rgba(14, 165, 233, 0.08);
 }
 
 .sun {

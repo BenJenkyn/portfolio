@@ -10,6 +10,7 @@
     position: relative;
     isolation: isolate;
     padding: 16px;
+    z-index: 10;
 }
 
 .pageShell::before,
@@ -28,7 +29,7 @@
     height: 18rem;
     top: -4rem;
     right: -6rem;
-    background: radial-gradient(circle, rgba(116, 214, 255, 0.14), transparent 66%);
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.14), transparent 66%);
 }
 
 .pageShell::after {
@@ -36,7 +37,7 @@
     height: 14rem;
     left: -5rem;
     bottom: 0;
-    background: radial-gradient(circle, rgba(255, 204, 106, 0.12), transparent 65%);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.12), transparent 65%);
 }
 
 .hero {
@@ -67,7 +68,7 @@
     line-height: 1.02;
     letter-spacing: -0.06em;
     padding-bottom: 0.08em;
-    background: linear-gradient(120deg, #f7fff2 10%, #b7f46a 45%, #74d6ff 82%);
+    background: linear-gradient(120deg, #f7fff2 10%, #3b82f6 45%, #0ea5e9 82%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -81,7 +82,7 @@
     letter-spacing: -0.06em;
     padding-bottom: 15px;
     color: transparent;
-    background: linear-gradient(120deg, #f6fbf1 0%, #b7f46a 50%, #ffcc6a 100%);
+    background: linear-gradient(120deg, #f6fbf1 0%, #3b82f6 50%, #0ea5e9 100%);
     -webkit-background-clip: text;
     background-clip: text;
 }
@@ -130,11 +131,11 @@
 }
 
 .socialLink:hover {
-    background: rgba(183, 244, 106, 0.12);
+    background: rgba(59, 130, 246, 0.12);
     border-color: var(--accent);
     color: var(--accent);
     transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(183, 244, 106, 0.15);
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.15);
 }
 
 .workSection {
