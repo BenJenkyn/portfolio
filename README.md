@@ -1,4 +1,8 @@
-## Usage
+# Ben Jenkyn's Portfolio
+
+This is my portfolio site that I made to show off the projects that I've built and worked on.
+
+## SolidJS Usage
 
 Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
 
