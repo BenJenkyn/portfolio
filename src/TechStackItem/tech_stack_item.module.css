@@ -1,4 +1,4 @@
-.tech_stack_item {
+.techStackItem {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -6,7 +6,7 @@
     text-align: left;
 }
 
-.tech_stack_icon {
+.techStackIcon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,13 +16,13 @@
     filter: drop-shadow(0 8px 20px rgba(184, 243, 106, 0.18));
 }
 
-.tech_stack_icon svg {
+.techStackIcon svg {
     display: block;
     width: 100%;
     height: 100%;
 }
 
-.tech_stack_font {
+.techStackFont {
     font-size: 0.8rem;
     margin: 0;
     font-weight: 500;
@@ -30,23 +30,23 @@
 }
 
 @media (min-width: 481px) {
-    .tech_stack_icon {
+    .techStackIcon {
         width: 44px;
         height: 44px;
     }
 
-    .tech_stack_font {
+    .techStackFont {
         font-size: 0.85rem;
     }
 }
 
 @media (min-width: 768px) {
-    .tech_stack_icon {
+    .techStackIcon {
         width: 48px;
         height: 48px;
     }
 
-    .tech_stack_font {
+    .techStackFont {
         font-size: 0.875rem;
     }
 }

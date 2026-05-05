@@ -49,7 +49,7 @@ const App: Component = () => {
       </section>
       <section id="work_projects" class={`${styles.section} ${styles.workSection}`}>
         <h2 class={styles.sectionTitle}>Work Projects</h2>
-        <div class={styles.glass_box_section}>
+        <div class={styles.glassBoxSection}>
           <GlassBox
             projectName='Lunch-a-Build Adventure'
             projectDescription='This website was a campaign by lunchables where kids could make their own lunchable creation, scan it, and then put it in the game where they could play against others to try and get a high score. I worked on the website and the tool to scan the Lunchable’s creation. Unfortunately the site has been taken down as the campaign is over but I have provided a link to the wayback machine so you can see what the home page looked like when it was running.'
@@ -78,7 +78,7 @@ const App: Component = () => {
       </section>
       <section id="school_projects" class={`${styles.section} ${styles.workSection}`}>
         <h2 class={styles.sectionTitle}>School Projects</h2>
-        <div class={styles.glass_box_section}>
+        <div class={styles.glassBoxSection}>
           <GlassBox
             projectName='Hollow Head (Video Game)'
             projectDescription='This was the final project for my Interactive Media class where me and my groupmate were given free range to make any type of video game we wanted in Godot. The requirements were that it needed a core loop, three distinct mechanics, a clear progression, a win/lose state and some level of UI polish. The art for the game was made using free asset packs, the links for which can be found in the GitHub. (Please note that if you want to play the game that you will need to use a browser on the desktop as it will not work properly on mobile.)'
@@ -101,7 +101,7 @@ const App: Component = () => {
       </section>
       <section id="personal_projects" class={`${styles.section} ${styles.workSection}`}>
         <h2 class={styles.sectionTitle}>Personal Projects</h2>
-        <div class={styles.glass_box_section}>
+        <div class={styles.glassBoxSection}>
           <GlassBox
             projectName='Exterminathan (Video Game)'
             projectDescription='This was a game made during a game jam that a team of 2 others and I worked on for TOJam 2025. We had 3 days to work on the game and the theme was “The more there is the worse it gets”. It was a lot of fun working on the team and trying to get the game working within the time limit. (Please note that if you want to play the game that you will need to use a browser on the desktop as it will not work properly on mobile.)'

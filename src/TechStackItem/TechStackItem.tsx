@@ -8,11 +8,11 @@ type TechStackItemProps = {
 
 const TechStackItem: Component<TechStackItemProps> = (props) => {
     return (
-        <div class={styles.tech_stack_item}>
-            <div class={styles.tech_stack_icon}>
+        <div class={styles.techStackItem}>
+            <div class={styles.techStackIcon}>
                 {props.icon}
             </div>
-            <p class={styles.tech_stack_font}>{props.name}</p>
+            <p class={styles.techStackFont}>{props.name}</p>
         </div>
     );
 };

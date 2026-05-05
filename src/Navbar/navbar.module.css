@@ -45,7 +45,7 @@
     z-index: 0;
 }
 
-.list_item {
+.listItem {
     position: relative;
     z-index: 1;
     flex: 1;
@@ -75,7 +75,7 @@
         bottom: 0.5rem;
     }
 
-    .list_item {
+    .listItem {
         padding: 0.7rem 1rem;
         font-size: 0.85rem;
         min-height: 48px;
@@ -87,11 +87,11 @@
     }
 }
 
-.list_item:hover {
+.listItem:hover {
     color: rgba(244, 248, 242, 0.98);
     transform: translateY(-1px);
 }
 
-.list_item.active {
+.listItem.active {
     color: #0f160f;
 }
