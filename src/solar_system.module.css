@@ -1,10 +1,24 @@
 .heroVisual {
     position: relative;
-    min-height: 280px;
+    min-height: 240px;
     overflow: hidden;
     width: 100%;
     max-width: 100%;
     order: -1;
+}
+
+@media (min-width: 481px) {
+    .heroVisual {
+        min-height: 300px;
+    }
+}
+
+@media (min-width: 768px) {
+    .heroVisual {
+        min-height: 350px;
+        max-width: none;
+        order: unset;
+    }
 }
 
 @media (min-width: 961px) {
@@ -29,11 +43,26 @@
 
 .solarGlow {
     position: absolute;
-    width: 128px;
-    height: 128px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.56) 0%, rgba(59, 130, 246, 0.3) 32%, rgba(14, 165, 233, 0.16) 58%, transparent 74%);
     box-shadow: 0 0 38px rgba(59, 130, 246, 0.18), 0 0 90px rgba(14, 165, 233, 0.08);
+}
+
+.sun {
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 34% 32%, #fff7db 0%, #ffd97a 28%, #ffb833 58%, #c96a11 100%);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+        0 0 28px rgba(255, 204, 106, 0.5),
+        0 0 78px rgba(255, 204, 106, 0.22);
+    animation: sunPulse 6s ease-in-out infinite;
+    z-index: 2;
 }
 
 .sunButton {
@@ -45,26 +74,13 @@
     z-index: 3;
     border-radius: 50%;
     appearance: none;
+    min-width: 60px;
+    min-height: 60px;
 }
 
 .sunButton:focus-visible {
     outline: 2px solid rgba(255, 214, 120, 0.8);
     outline-offset: 8px;
-}
-
-.sun {
-    display: block;
-    width: 76px;
-    height: 76px;
-    border-radius: 50%;
-    background:
-        radial-gradient(circle at 34% 32%, #fff7db 0%, #ffd97a 28%, #ffb833 58%, #c96a11 100%);
-    box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.08) inset,
-        0 0 28px rgba(255, 204, 106, 0.5),
-        0 0 78px rgba(255, 204, 106, 0.22);
-    animation: sunPulse 6s ease-in-out infinite;
-    z-index: 2;
 }
 
 .sunActive .sun {
@@ -77,12 +93,56 @@
 
 .sunBurst {
     position: absolute;
-    width: 168px;
-    height: 168px;
+    width: 140px;
+    height: 140px;
     opacity: 0;
     transform: scale(0.62);
     pointer-events: none;
     z-index: 1;
+}
+
+@media (min-width: 481px) {
+    .solarGlow {
+        width: 120px;
+        height: 120px;
+    }
+
+    .sun {
+        width: 70px;
+        height: 70px;
+    }
+
+    .sunBurst {
+        width: 160px;
+        height: 160px;
+    }
+
+    .sunButton {
+        min-width: 70px;
+        min-height: 70px;
+    }
+}
+
+@media (min-width: 768px) {
+    .solarGlow {
+        width: 128px;
+        height: 128px;
+    }
+
+    .sun {
+        width: 76px;
+        height: 76px;
+    }
+
+    .sunBurst {
+        width: 168px;
+        height: 168px;
+    }
+
+    .sunButton {
+        min-width: 76px;
+        min-height: 76px;
+    }
 }
 
 .sunBurst span {
@@ -153,16 +213,16 @@
 .sunFact {
     position: absolute;
     left: 50%;
-    top: calc(50% + 78px);
+    top: calc(50% + 70px);
     margin: 0;
-    padding: 10px 14px;
+    padding: 0.6rem 0.8rem;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 999px;
     background: rgba(10, 15, 28, 0.58);
     backdrop-filter: blur(12px);
     color: rgba(247, 251, 255, 0.92);
     text-align: center;
-    max-width: min(260px, 75vw);
+    max-width: min(250px, 85vw);
     transform: translate(-50%, 10px) scale(0.96);
     opacity: 0;
     pointer-events: none;
@@ -170,18 +230,36 @@
 }
 
 .funFactHeader {
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(59, 130, 246, 0.9);
-    margin-bottom: 4px;
+    margin-bottom: 3px;
 }
 
 .funFactText {
     margin: 0;
-    font-size: 0.78rem;
-    line-height: 1.25;
+    font-size: 0.75rem;
+    line-height: 1.2;
+}
+
+@media (min-width: 481px) {
+    .sunFact {
+        top: calc(50% + 82px);
+        padding: 0.7rem 0.95rem;
+        max-width: min(260px, 75vw);
+    }
+
+    .funFactHeader {
+        font-size: 0.68rem;
+        margin-bottom: 4px;
+    }
+
+    .funFactText {
+        font-size: 0.78rem;
+        line-height: 1.25;
+    }
 }
 
 .sunFactVisible {
