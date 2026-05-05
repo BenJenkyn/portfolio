@@ -1,6 +1,6 @@
 import styles from './app.module.css';
 import solarStyles from './solar_system.module.css';
-import type { Component } from 'solid-js';
+import { createSignal, type Component } from 'solid-js';
 import Navbar from './Navbar/Navbar';
 import GlassBox from './GlassBox/GlassBox';
 import {
@@ -25,7 +25,30 @@ import {
   SiSolid
 } from 'solid-icons/si'
 
+const solarFacts = [
+  'The Sun contains 99.86% of the solar system\'s mass.',
+  'Sunlight takes about 8 minutes to reach Earth.',
+  'The Sun is roughly 4.6 billion years old.',
+];
+
 const App: Component = () => {
+  const [sunFlare, setSunFlare] = createSignal(false);
+  const [sunClickCount, setSunClickCount] = createSignal(0);
+  let flareTimer: ReturnType<typeof setTimeout> | undefined;
+
+  const handleSunClick = () => {
+    setSunClickCount((count) => count + 1);
+    setSunFlare(true);
+
+    if (flareTimer) {
+      clearTimeout(flareTimer);
+    }
+
+    flareTimer = setTimeout(() => {
+      setSunFlare(false);
+    }, 1100);
+  };
+
   return (
     <main class={styles.pageShell}>
       <section id="intro_screen" class={`${styles.section} ${styles.hero}`}>
@@ -44,10 +67,32 @@ const App: Component = () => {
             </a>
           </div>
         </div>
-        <div class={solarStyles.heroVisual} aria-hidden="true">
+        <div class={solarStyles.heroVisual}>
           <div class={solarStyles.solarSystem}>
             <div class={solarStyles.solarGlow} />
-            <div class={solarStyles.sun} />
+            <div class={solarStyles.sunBurst} classList={{ [solarStyles.sunBurstActive]: sunFlare() }} aria-hidden="true">
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+            <button
+              type="button"
+              class={solarStyles.sunButton}
+              classList={{ [solarStyles.sunActive]: sunFlare() }}
+              aria-label="Trigger a solar flare"
+              aria-pressed={sunFlare()}
+              onClick={handleSunClick}
+            >
+              <span class={solarStyles.sun} />
+            </button>
+            <p class={solarStyles.sunFact} classList={{ [solarStyles.sunFactVisible]: sunFlare() }} aria-hidden="true">
+              {solarFacts[sunClickCount() % solarFacts.length]}
+            </p>
             <div class={solarStyles.orbitOne}>
               <span class={`${solarStyles.planet} ${solarStyles.planetOne}`} />
             </div>
