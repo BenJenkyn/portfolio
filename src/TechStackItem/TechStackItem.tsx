@@ -1,5 +1,5 @@
 import { Component, JSX } from "solid-js";
-import styles from './glass_box.module.css';
+import styles from './tech_stack_item.module.css';
 
 type TechStackItemProps = {
     icon: JSX.Element;

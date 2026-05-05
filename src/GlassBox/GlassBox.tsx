@@ -1,7 +1,7 @@
 import { Component, JSX } from "solid-js";
 import styles from './glass_box.module.css';
 import { OcGlobe3, OcMarkgithub3, OcLinkexternal3 } from 'solid-icons/oc';
-import TechStackItem from './TechStackItem';
+import TechStackItem from '../TechStackItem/TechStackItem';
 
 type TechStack = {
     icon: JSX.Element;
