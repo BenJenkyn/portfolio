@@ -155,20 +155,33 @@
     left: 50%;
     top: calc(50% + 78px);
     margin: 0;
-    padding: 8px 12px;
+    padding: 10px 14px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 999px;
     background: rgba(10, 15, 28, 0.58);
     backdrop-filter: blur(12px);
     color: rgba(247, 251, 255, 0.92);
-    font-size: 0.78rem;
-    line-height: 1.2;
     text-align: center;
-    max-width: min(240px, 70vw);
+    max-width: min(260px, 75vw);
     transform: translate(-50%, 10px) scale(0.96);
     opacity: 0;
     pointer-events: none;
     z-index: 4;
+}
+
+.funFactHeader {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(59, 130, 246, 0.9);
+    margin-bottom: 4px;
+}
+
+.funFactText {
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.25;
 }
 
 .sunFactVisible {
@@ -509,7 +522,8 @@
     }
 
     .sunFact {
-        top: calc(50% + 94px);
+        top: calc(50% + 102px);
+        max-width: min(280px, 75vw);
     }
 
     .orbitOne {
@@ -576,8 +590,16 @@
     }
 
     .sunFact {
-        top: calc(50% + 74px);
-        max-width: min(210px, 74vw);
+        top: calc(50% + 88px);
+        max-width: min(240px, 78vw);
+        padding: 9px 12px;
+    }
+
+    .funFactHeader {
+        font-size: 0.64rem;
+    }
+
+    .funFactText {
         font-size: 0.72rem;
     }
 

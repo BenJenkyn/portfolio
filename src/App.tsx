@@ -28,25 +28,44 @@ import {
 const solarFacts = [
   'The Sun contains 99.86% of the solar system\'s mass.',
   'Sunlight takes about 8 minutes to reach Earth.',
-  'The Sun is roughly 4.6 billion years old.',
+  'Mercury is the smallest planet in our solar system',
+  'Venus orbits backwards compared to the other planets',
+  'Earth is where we are',
+  'Mars has the tallest volcano in the solar system, 3 times larger than Mt. Everest',
+  'Jupiter is the largest planet and the fastest spinning, doing 1 full rotation in 10 hours',
+  'The density of Saturn is so low that it could theoretically float on water',
+  'Uranus orbits sideways compared to other planets',
+  'Neptune was discovered with math before telescopes'
 ];
 
 const App: Component = () => {
   const [sunFlare, setSunFlare] = createSignal(false);
   const [sunClickCount, setSunClickCount] = createSignal(0);
+  const [showFact, setShowFact] = createSignal(false);
   let flareTimer: ReturnType<typeof setTimeout> | undefined;
+  let factTimer: ReturnType<typeof setTimeout> | undefined;
 
   const handleSunClick = () => {
     setSunClickCount((count) => count + 1);
+    
+    // Reset and retrigger the fact animation
+    setShowFact(false);
+    
+    // Trigger flare
     setSunFlare(true);
-
-    if (flareTimer) {
-      clearTimeout(flareTimer);
-    }
-
+    if (flareTimer) clearTimeout(flareTimer);
     flareTimer = setTimeout(() => {
       setSunFlare(false);
     }, 1100);
+    
+    // Show fact with a tiny delay to ensure animation resets
+    if (factTimer) clearTimeout(factTimer);
+    setTimeout(() => {
+      setShowFact(true);
+      factTimer = setTimeout(() => {
+        setShowFact(false);
+      }, 1100);
+    }, 10);
   };
 
   return (
@@ -90,9 +109,12 @@ const App: Component = () => {
             >
               <span class={solarStyles.sun} />
             </button>
-            <p class={solarStyles.sunFact} classList={{ [solarStyles.sunFactVisible]: sunFlare() }} aria-hidden="true">
-              {solarFacts[sunClickCount() % solarFacts.length]}
-            </p>
+            <div class={solarStyles.sunFact} classList={{ [solarStyles.sunFactVisible]: showFact() }} aria-live="polite">
+              <div class={solarStyles.funFactHeader}>Fun Fact</div>
+              <p class={solarStyles.funFactText}>
+                {solarFacts[sunClickCount() % solarFacts.length]}
+              </p>
+            </div>
             <div class={solarStyles.orbitOne}>
               <span class={`${solarStyles.planet} ${solarStyles.planetOne}`} />
             </div>
