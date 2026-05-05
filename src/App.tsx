@@ -69,6 +69,9 @@ const App: Component = () => {
             <div class={solarStyles.orbitSeven}>
               <span class={`${solarStyles.planet} ${solarStyles.planetSeven}`} />
             </div>
+            <div class={solarStyles.orbitEight}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetEight}`} />
+            </div>
             <div class={solarStyles.stars}>
               <span class={solarStyles.starA} />
               <span class={solarStyles.starB} />

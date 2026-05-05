@@ -57,7 +57,8 @@
 .orbitFour,
 .orbitFive,
 .orbitSix,
-.orbitSeven {
+.orbitSeven,
+.orbitEight {
     position: absolute;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.11);
@@ -111,6 +112,13 @@
     height: min(84vw, 270px);
     animation-duration: 30s;
     animation-delay: -11s;
+}
+
+.orbitEight {
+    width: min(92vw, 300px);
+    height: min(92vw, 300px);
+    animation-duration: 38s;
+    animation-delay: -22s;
 }
 
 .planet {
@@ -174,6 +182,13 @@
     box-shadow: 0 0 14px rgba(141, 225, 242, 0.2);
 }
 
+.planetEight {
+    width: 9px;
+    height: 9px;
+    background: linear-gradient(135deg, #c7d2fe, #8b9cfb 52%, #5160d4 100%);
+    box-shadow: 0 0 12px rgba(139, 156, 251, 0.2);
+}
+
 .stars {
     position: absolute;
     inset: 0;
@@ -235,6 +250,7 @@
     .orbitFive,
     .orbitSix,
     .orbitSeven,
+    .orbitEight,
     .sun,
     .stars span {
         will-change: transform, opacity;
@@ -283,6 +299,7 @@
     .orbitFive,
     .orbitSix,
     .orbitSeven,
+    .orbitEight,
     .sun,
     .stars span {
         animation: none;
@@ -338,8 +355,68 @@
         width: min(70vw, 320px);
         height: min(70vw, 320px);
     }
+
+    .orbitEight {
+        width: min(78vw, 350px);
+        height: min(78vw, 350px);
+    }
     .heroVisual {
         min-height: 460px;
+    }
+}
+
+@media (max-width: 640px) {
+    .heroVisual {
+        min-height: 400px;
+    }
+
+    .solarSystem {
+        inset: 14px;
+    }
+
+    .sun {
+        width: 68px;
+        height: 68px;
+    }
+
+    .orbitOne {
+        width: min(22vw, 96px);
+        height: min(22vw, 96px);
+    }
+
+    .orbitTwo {
+        width: min(30vw, 124px);
+        height: min(30vw, 124px);
+    }
+
+    .orbitThree {
+        width: min(38vw, 154px);
+        height: min(38vw, 154px);
+    }
+
+    .orbitFour {
+        width: min(46vw, 184px);
+        height: min(46vw, 184px);
+    }
+
+    .orbitFive {
+        width: min(54vw, 214px);
+        height: min(54vw, 214px);
+    }
+
+    .orbitSix {
+        width: min(62vw, 244px);
+        height: min(62vw, 244px);
+    }
+
+    .orbitSeven {
+        width: min(70vw, 274px);
+        height: min(70vw, 274px);
+    }
+
+    .orbitEight {
+        width: min(78vw, 304px);
+        height: min(78vw, 304px);
     }
 }
 
