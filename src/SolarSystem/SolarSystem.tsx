@@ -5,13 +5,13 @@ const solarFacts = [
   'The Sun contains 99.86% of the solar system\'s mass.',
   'Sunlight takes about 8 minutes to reach Earth.',
   'Mercury is the smallest planet in our solar system',
-  'Venus orbits backwards compared to the other planets',
-  'Earth is where we are',
-  'Mars has the tallest volcano in the solar system, 3 times larger than Mt. Everest',
-  'Jupiter is the largest planet and the fastest spinning, doing 1 full rotation in 10 hours',
-  'The density of Saturn is so low that it could theoretically float on water',
-  'Uranus orbits sideways compared to other planets',
-  'Neptune was discovered with math before telescopes'
+  'Venus orbits backwards compared to the other planets.',
+  'Earth is where we are.',
+  'Mars has the tallest volcano in the solar system, 3 times larger than Mt. Everest.',
+  'Jupiter is the largest planet and the fastest spinning, doing 1 full rotation in 10 hours.',
+  'The density of Saturn is so low that it could theoretically float on water.',
+  'Uranus orbits sideways compared to other planets.',
+  'Neptune was discovered with math before telescopes.'
 ];
 
 const SolarSystem: Component = () => {
