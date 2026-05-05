@@ -20,7 +20,7 @@ import styles from './navbar.module.css'
 /**
  * Represents the available portfolio sections.
  */
-type Section = 'work' | 'school' | 'personal';
+type Section = 'home' | 'work' | 'school' | 'personal';
 
 /**
  * Configuration for each navigable section.
@@ -35,19 +35,15 @@ interface SectionConfig {
  * Navigation section definitions with their display labels and target element IDs.
  */
 const sections: SectionConfig[] = [
+  { id: 'home', label: 'Home', targetId: 'intro_screen' },
   { id: 'work', label: 'Work', targetId: 'work_projects' },
   { id: 'school', label: 'School', targetId: 'school_projects' },
   { id: 'personal', label: 'Personal', targetId: 'personal_projects' },
 ];
 
-/**
- * ID of the intro section used when home button is clicked.
- */
-const homeTargetId = 'intro_screen';
-
 const Navbar: Component = () => {
-  // State: Currently active section (or null for intro screen)
-  const [activeSection, setActiveSection] = createSignal<Section | null>(null);
+  // State: Currently active section
+  const [activeSection, setActiveSection] = createSignal<Section>('home');
   // State: CSS positioning for the active section indicator line
   const [indicatorStyle, setIndicatorStyle] = createSignal({ left: '0px', width: '0px' });
   // Flag to distinguish user scroll from programmatic scroll (prevents double-triggering)
@@ -55,7 +51,6 @@ const Navbar: Component = () => {
   // DOM references for the navbar and navigation items
   let navRef: HTMLElement | undefined;
   let itemRefs: Record<Section, HTMLElement> = {} as Record<Section, HTMLElement>;
-  let homeRef: HTMLElement | undefined;
   let scrollTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   /**
@@ -75,9 +70,16 @@ const Navbar: Component = () => {
    * Marks scroll as programmatic to prevent Intersection Observer from interfering.
    * 
    * @param targetId - ID of the section element to scroll to
-   * @param sectionId - ID of the section (work, school, or personal)
+   * @param sectionId - ID of the section (home, work, school, or personal)
    */
   const scrollToSection = (targetId: string, sectionId: Section) => {
+    if (sectionId === 'home') {
+      setActiveSection('home');
+      beginProgrammaticScroll();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     const element = document.getElementById(targetId);
     if (element) {
       setActiveSection(sectionId);
@@ -95,21 +97,9 @@ const Navbar: Component = () => {
     const active = activeSection();
     const nav = navRef;
     if (nav) {
-      if (active) {
-        const activeElement = itemRefs[active];
-        if (activeElement) {
-          const itemRect = activeElement.getBoundingClientRect();
-          const navRect = nav.getBoundingClientRect();
-          setIndicatorStyle({
-            left: `${itemRect.left - navRect.left}px`,
-            width: `${itemRect.width}px`,
-          });
-          return;
-        }
-      }
-
-      if (homeRef) {
-        const itemRect = homeRef.getBoundingClientRect();
+      const activeElement = itemRefs[active];
+      if (activeElement) {
+        const itemRect = activeElement.getBoundingClientRect();
         const navRect = nav.getBoundingClientRect();
         setIndicatorStyle({
           left: `${itemRect.left - navRect.left}px`,
@@ -147,11 +137,6 @@ const Navbar: Component = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && !isProgrammaticScroll) {
-          if (entry.target.id === homeTargetId) {
-            setActiveSection(null);
-            return;
-          }
-
           const sectionConfig = sections.find(s => s.targetId === entry.target.id);
           if (sectionConfig) {
             setActiveSection(sectionConfig.id);
@@ -160,15 +145,11 @@ const Navbar: Component = () => {
       });
     }, observerOptions);
 
-    // Observe all project sections for intersection changes
+    // Observe all sections for intersection changes
     sections.forEach((section) => {
       const element = document.getElementById(section.targetId);
       if (element) observer.observe(element);
     });
-
-    // Observe home section (intro screen)
-    const homeElement = document.getElementById(homeTargetId);
-    if (homeElement) observer.observe(homeElement);
 
     // Cleanup: Remove listeners and stop observing on component unmount
     onCleanup(() => {
@@ -187,29 +168,18 @@ const Navbar: Component = () => {
         width: indicatorStyle().width,
         opacity: indicatorStyle().width !== '0px' ? '1' : '0',
       }} />
-      {/* Home button: Scrolls to intro screen and resets active section */}
-      <button
-        ref={(el) => (homeRef = el)}
-        class={`${styles.listItem} ${activeSection() === null ? styles.active : ''}`}
-        onClick={() => {
-          setActiveSection(null);
-          beginProgrammaticScroll();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        aria-label="Go to home"
-      >
-        <BiSolidHome style={{ width: '18px', height: '18px' }} aria-hidden="true" />
-      </button>
-      {/* Project section navigation links */}
+      {/* Section navigation links */}
       <For each={sections}>
         {(section) => (
           <button
             ref={(el) => (itemRefs[section.id] = el)}
             class={`${styles.listItem} ${activeSection() === section.id ? styles.active : ''}`}
             onClick={() => scrollToSection(section.targetId, section.id)}
-            aria-label={`Scroll to ${section.label}`}
+            aria-label={section.id === 'home' ? 'Go to home' : `Scroll to ${section.label}`}
           >
-            {section.label}
+            {section.id === 'home'
+              ? <BiSolidHome style={{ width: '18px', height: '18px' }} aria-hidden="true" />
+              : section.label}
           </button>
         )}
       </For>
