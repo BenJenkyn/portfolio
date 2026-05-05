@@ -1,4 +1,4 @@
-.glass_background {
+.glassBackground {
     position: relative;
     overflow: hidden;
     background:
@@ -14,7 +14,7 @@
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-.glass_background::before {
+.glassBackground::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -24,13 +24,13 @@
     pointer-events: none;
 }
 
-.glass_background h3 {
+.glassBackground h3 {
     margin: 0 0 0.5rem;
     font-size: 1.25rem;
     font-weight: 600;
 }
 
-.project_title {
+.projectTitle {
     margin: 0 0 0.5rem;
     font-size: 1.25rem;
     font-weight: 600;
@@ -39,7 +39,7 @@
     color: #f7fbf3;
 }
 
-.tech_stack_title {
+.techStackTitle {
     margin: 0 0 1rem;
     font-size: 0.95rem;
     font-weight: 600;
@@ -48,7 +48,7 @@
     color: rgba(245, 250, 242, 0.7);
 }
 
-.link_section {
+.linkSection {
     padding-top: 1rem;
     padding-bottom: 1rem;
     display: flex;
@@ -56,7 +56,7 @@
     flex-wrap: wrap;
 }
 
-.website_link { 
+.websiteLink { 
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     padding: 0.7rem 0.95rem;
@@ -71,18 +71,18 @@
     transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
 }
 
-.website_link svg {
+.websiteLink svg {
     display: block;
 }
 
-.website_link:hover {
+.websiteLink:hover {
     transform: translateY(-1px);
     border-color: rgba(59, 130, 246, 0.36);
     background: rgba(59, 130, 246, 0.08);
     box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
 }
 
-.tech_stack_section {
+.techStackSection {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.75rem 1rem;
@@ -92,23 +92,23 @@
 }
 
 @media (min-width: 481px) {
-    .tech_stack_section {
+    .techStackSection {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
 @media (min-width: 768px) {
-    .tech_stack_section {
+    .techStackSection {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
 
 @media (min-width: 961px) {
-    .glass_background {
+    .glassBackground {
         flex: 1;
     }
 
-    .tech_stack_section {
+    .techStackSection {
         grid-template-columns: repeat(5, minmax(0, 1fr));
         justify-items: start;
         align-items: start;

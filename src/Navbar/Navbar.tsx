@@ -126,7 +126,7 @@ const Navbar: Component = () => {
       }} />
       <button
         ref={(el) => (homeRef = el)}
-        class={`${styles.list_item} ${activeSection() === null ? styles.active : ''}`}
+        class={`${styles.listItem} ${activeSection() === null ? styles.active : ''}`}
         onClick={() => {
           setActiveSection(null);
           beginProgrammaticScroll();
@@ -140,7 +140,7 @@ const Navbar: Component = () => {
         {(section) => (
           <button
             ref={(el) => (itemRefs[section.id] = el)}
-            class={`${styles.list_item} ${activeSection() === section.id ? styles.active : ''}`}
+            class={`${styles.listItem} ${activeSection() === section.id ? styles.active : ''}`}
             onClick={() => scrollToSection(section.targetId, section.id)}
             aria-label={`Scroll to ${section.label}`}
           >
