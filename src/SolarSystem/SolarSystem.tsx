@@ -1,6 +1,24 @@
+/**
+ * SolarSystem Component
+ * 
+ * Interactive animated visualization of a solar system.
+ * Features:
+ * - Clickable sun button that triggers a flare animation
+ * - Displays a random fun fact about space each time the sun is clicked
+ * - Orbiting planets for visual interest
+ * - Smooth animations and responsive design
+ * 
+ * The component uses Intersection Observer to track user interaction
+ * and manages animation timers for the flare effect and fact display.
+ */
+
 import { Component, createSignal } from 'solid-js';
 import styles from './solar_system.module.css';
 
+/**
+ * Array of educational facts about our solar system.
+ * A random fact is displayed each time the sun button is clicked.
+ */
 const solarFacts = [
   'The Sun contains 99.86% of the solar system\'s mass.',
   'Sunlight takes about 8 minutes to reach Earth.',
@@ -15,12 +33,23 @@ const solarFacts = [
 ];
 
 const SolarSystem: Component = () => {
+  // State: Controls whether the sun flare animation is active
   const [sunFlare, setSunFlare] = createSignal(false);
+  // State: Tracks the number of times the sun has been clicked (used to select fact)
   const [sunClickCount, setSunClickCount] = createSignal(0);
+  // State: Controls whether the fun fact tooltip is visible
   const [showFact, setShowFact] = createSignal(false);
+  // Timer IDs for cleanup
   let flareTimer: ReturnType<typeof setTimeout> | undefined;
   let factTimer: ReturnType<typeof setTimeout> | undefined;
 
+  /**
+   * Handles sun button clicks:
+   * 1. Increments click counter (used for fact rotation)
+   * 2. Triggers the sun flare animation (1100ms)
+   * 3. Displays a fun fact for 3.5 seconds
+   * Clears previous timers to allow rapid re-triggering.
+   */
   const handleSunClick = () => {
     setSunClickCount((count) => count + 1);
     
@@ -47,7 +76,9 @@ const SolarSystem: Component = () => {
   return (
     <div class={styles.heroVisual}>
       <div class={styles.solarSystem}>
+        {/* Background glow effect for the sun */}
         <div class={styles.solarGlow} />
+        {/* Sun flare animation that plays when the button is clicked */}
         <div class={styles.sunBurst} classList={{ [styles.sunBurstActive]: sunFlare() }} aria-hidden="true">
           <span />
           <span />
@@ -58,6 +89,7 @@ const SolarSystem: Component = () => {
           <span />
           <span />
         </div>
+        {/* Interactive sun button: Triggers flare animation and displays facts */}
         <button
           type="button"
           class={styles.sunButton}
@@ -68,12 +100,14 @@ const SolarSystem: Component = () => {
         >
           <span class={styles.sun} />
         </button>
+        {/* Fun fact tooltip: Appears when sun is clicked, uses aria-live for accessibility */}
         <div class={styles.sunFact} classList={{ [styles.sunFactVisible]: showFact() }} aria-live="polite">
           <div class={styles.funFactHeader}>Fun Fact</div>
           <p class={styles.funFactText}>
             {solarFacts[sunClickCount() % solarFacts.length]}
           </p>
         </div>
+        {/* Orbiting planets: Eight animated orbits representing planets in our solar system */}
         <div class={styles.orbitOne}>
           <span class={`${styles.planet} ${styles.planetOne}`} />
         </div>

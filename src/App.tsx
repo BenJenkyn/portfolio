@@ -1,3 +1,16 @@
+/**
+ * Main portfolio application component.
+ * 
+ * Renders the complete portfolio layout with:
+ * - Hero section: Introduction with name, title, bio, and interactive solar system animation
+ * - Work section: Professional projects and client work
+ * - School section: Academic and coursework projects
+ * - Personal section: Side projects and learning experiments
+ * - Navigation: Sticky navbar for section jumping with active section highlighting
+ * 
+ * Uses Solid.js for reactive UI and CSS modules for scoped styling.
+ */
+
 import styles from './app.module.css';
 import { type Component } from 'solid-js';
 import Navbar from './Navbar/Navbar';
@@ -26,10 +39,11 @@ import {
 } from 'solid-icons/si'
 
 const App: Component = () => {
-
   return (
     <main class={styles.pageShell}>
+      {/* Hero section: Introduction and visual branding */}
       <section id="intro_screen" class={`${styles.section} ${styles.hero}`}>
+        {/* Text content: Name, professional title, tagline, and social media links */}
         <div class={styles.heroCopy}>
           <h1 class={styles.heroTitle}>Ben Jenkyn</h1>
           <p class={styles.eyebrow}>Software Developer</p>
@@ -45,8 +59,11 @@ const App: Component = () => {
             </a>
           </div>
         </div>
+        {/* Interactive animated solar system visualization */}
         <SolarSystem />
       </section>
+
+      {/* Work section: Professional projects and client work */}
       <section id="work_projects" class={`${styles.section} ${styles.workSection}`}>
         <h2 class={styles.sectionTitle}>Work Projects</h2>
         <div class={styles.glassBoxSection}>
@@ -76,6 +93,8 @@ const App: Component = () => {
           />
         </div>
       </section>
+
+      {/* School section: Academic projects and coursework */}
       <section id="school_projects" class={`${styles.section} ${styles.workSection}`}>
         <h2 class={styles.sectionTitle}>School Projects</h2>
         <div class={styles.glassBoxSection}>
@@ -99,6 +118,8 @@ const App: Component = () => {
           />
         </div>
       </section>
+
+      {/* Personal section: Side projects, learning experiments, and game jam entries */}
       <section id="personal_projects" class={`${styles.section} ${styles.workSection}`}>
         <h2 class={styles.sectionTitle}>Personal Projects</h2>
         <div class={styles.glassBoxSection}>
@@ -132,6 +153,8 @@ const App: Component = () => {
           />
         </div>
       </section>
+
+      {/* Navigation: Sticky navbar with active section indicator and smooth scrolling */}
       <Navbar />
     </main>
   );
