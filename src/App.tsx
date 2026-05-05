@@ -1,6 +1,6 @@
 import styles from './app.module.css';
 import solarStyles from './solar_system.module.css';
-import type { Component } from 'solid-js';
+import { createSignal, type Component } from 'solid-js';
 import Navbar from './Navbar/Navbar';
 import GlassBox from './GlassBox/GlassBox';
 import {
@@ -25,7 +25,49 @@ import {
   SiSolid
 } from 'solid-icons/si'
 
+const solarFacts = [
+  'The Sun contains 99.86% of the solar system\'s mass.',
+  'Sunlight takes about 8 minutes to reach Earth.',
+  'Mercury is the smallest planet in our solar system',
+  'Venus orbits backwards compared to the other planets',
+  'Earth is where we are',
+  'Mars has the tallest volcano in the solar system, 3 times larger than Mt. Everest',
+  'Jupiter is the largest planet and the fastest spinning, doing 1 full rotation in 10 hours',
+  'The density of Saturn is so low that it could theoretically float on water',
+  'Uranus orbits sideways compared to other planets',
+  'Neptune was discovered with math before telescopes'
+];
+
 const App: Component = () => {
+  const [sunFlare, setSunFlare] = createSignal(false);
+  const [sunClickCount, setSunClickCount] = createSignal(0);
+  const [showFact, setShowFact] = createSignal(false);
+  let flareTimer: ReturnType<typeof setTimeout> | undefined;
+  let factTimer: ReturnType<typeof setTimeout> | undefined;
+
+  const handleSunClick = () => {
+    setSunClickCount((count) => count + 1);
+    
+    // Reset and retrigger the fact animation
+    setShowFact(false);
+    
+    // Trigger flare
+    setSunFlare(true);
+    if (flareTimer) clearTimeout(flareTimer);
+    flareTimer = setTimeout(() => {
+      setSunFlare(false);
+    }, 1100);
+    
+    // Show fact with a tiny delay to ensure animation resets
+    if (factTimer) clearTimeout(factTimer);
+    setTimeout(() => {
+      setShowFact(true);
+      factTimer = setTimeout(() => {
+        setShowFact(false);
+      }, 1100);
+    }, 10);
+  };
+
   return (
     <main class={styles.pageShell}>
       <section id="intro_screen" class={`${styles.section} ${styles.hero}`}>
@@ -44,10 +86,35 @@ const App: Component = () => {
             </a>
           </div>
         </div>
-        <div class={solarStyles.heroVisual} aria-hidden="true">
+        <div class={solarStyles.heroVisual}>
           <div class={solarStyles.solarSystem}>
             <div class={solarStyles.solarGlow} />
-            <div class={solarStyles.sun} />
+            <div class={solarStyles.sunBurst} classList={{ [solarStyles.sunBurstActive]: sunFlare() }} aria-hidden="true">
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+            <button
+              type="button"
+              class={solarStyles.sunButton}
+              classList={{ [solarStyles.sunActive]: sunFlare() }}
+              aria-label="Trigger a solar flare"
+              aria-pressed={sunFlare()}
+              onClick={handleSunClick}
+            >
+              <span class={solarStyles.sun} />
+            </button>
+            <div class={solarStyles.sunFact} classList={{ [solarStyles.sunFactVisible]: showFact() }} aria-live="polite">
+              <div class={solarStyles.funFactHeader}>Fun Fact</div>
+              <p class={solarStyles.funFactText}>
+                {solarFacts[sunClickCount() % solarFacts.length]}
+              </p>
+            </div>
             <div class={solarStyles.orbitOne}>
               <span class={`${solarStyles.planet} ${solarStyles.planetOne}`} />
             </div>
@@ -68,6 +135,9 @@ const App: Component = () => {
             </div>
             <div class={solarStyles.orbitSeven}>
               <span class={`${solarStyles.planet} ${solarStyles.planetSeven}`} />
+            </div>
+            <div class={solarStyles.orbitEight}>
+              <span class={`${solarStyles.planet} ${solarStyles.planetEight}`} />
             </div>
             <div class={solarStyles.stars}>
               <span class={solarStyles.starA} />

@@ -1,10 +1,24 @@
 .heroVisual {
     position: relative;
-    min-height: 280px;
+    min-height: 240px;
     overflow: hidden;
     width: 100%;
     max-width: 100%;
     order: -1;
+}
+
+@media (min-width: 481px) {
+    .heroVisual {
+        min-height: 300px;
+    }
+}
+
+@media (min-width: 768px) {
+    .heroVisual {
+        min-height: 350px;
+        max-width: none;
+        order: unset;
+    }
 }
 
 @media (min-width: 961px) {
@@ -29,17 +43,17 @@
 
 .solarGlow {
     position: absolute;
-    width: 128px;
-    height: 128px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.56) 0%, rgba(59, 130, 246, 0.3) 32%, rgba(14, 165, 233, 0.16) 58%, transparent 74%);
     box-shadow: 0 0 38px rgba(59, 130, 246, 0.18), 0 0 90px rgba(14, 165, 233, 0.08);
 }
 
 .sun {
-    position: absolute;
-    width: 76px;
-    height: 76px;
+    display: block;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background:
         radial-gradient(circle at 34% 32%, #fff7db 0%, #ffd97a 28%, #ffb833 58%, #c96a11 100%);
@@ -51,13 +65,215 @@
     z-index: 2;
 }
 
+.sunButton {
+    position: absolute;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    z-index: 3;
+    border-radius: 50%;
+    appearance: none;
+    min-width: 60px;
+    min-height: 60px;
+}
+
+.sunButton:focus-visible {
+    outline: 2px solid rgba(255, 214, 120, 0.8);
+    outline-offset: 8px;
+}
+
+.sunActive .sun {
+    filter: brightness(1.08) saturate(1.05);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+        0 0 34px rgba(255, 204, 106, 0.58),
+        0 0 96px rgba(255, 204, 106, 0.28);
+}
+
+.sunBurst {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    opacity: 0;
+    transform: scale(0.62);
+    pointer-events: none;
+    z-index: 1;
+}
+
+@media (min-width: 481px) {
+    .solarGlow {
+        width: 120px;
+        height: 120px;
+    }
+
+    .sun {
+        width: 70px;
+        height: 70px;
+    }
+
+    .sunBurst {
+        width: 160px;
+        height: 160px;
+    }
+
+    .sunButton {
+        min-width: 70px;
+        min-height: 70px;
+    }
+}
+
+@media (min-width: 768px) {
+    .solarGlow {
+        width: 128px;
+        height: 128px;
+    }
+
+    .sun {
+        width: 76px;
+        height: 76px;
+    }
+
+    .sunBurst {
+        width: 168px;
+        height: 168px;
+    }
+
+    .sunButton {
+        min-width: 76px;
+        min-height: 76px;
+    }
+}
+
+.sunBurst span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 44px;
+    margin-left: -4px;
+    margin-top: -22px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255, 247, 214, 0.9), rgba(255, 200, 86, 0.65) 45%, transparent 100%);
+    transform-origin: center 70px;
+}
+
+.sunBurst span:nth-child(2) {
+    --ray-angle: 45deg;
+}
+
+.sunBurst span:nth-child(3) {
+    --ray-angle: 90deg;
+}
+
+.sunBurst span:nth-child(4) {
+    --ray-angle: 135deg;
+}
+
+.sunBurst span:nth-child(5) {
+    width: 6px;
+    height: 58px;
+    margin-left: -3px;
+    margin-top: -29px;
+    --ray-angle: 22deg;
+}
+
+.sunBurst span:nth-child(6) {
+    width: 6px;
+    height: 58px;
+    margin-left: -3px;
+    margin-top: -29px;
+    --ray-angle: 68deg;
+}
+
+.sunBurst span:nth-child(7) {
+    width: 6px;
+    height: 58px;
+    margin-left: -3px;
+    margin-top: -29px;
+    --ray-angle: 112deg;
+}
+
+.sunBurst span:nth-child(8) {
+    width: 6px;
+    height: 58px;
+    margin-left: -3px;
+    margin-top: -29px;
+    --ray-angle: 158deg;
+}
+
+.sunBurstActive {
+    animation: flareBurst 1100ms ease-out;
+}
+
+.sunBurstActive span {
+    animation: flareRay 1100ms ease-out;
+}
+
+.sunFact {
+    position: absolute;
+    left: 50%;
+    top: calc(50% + 70px);
+    margin: 0;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background: rgba(10, 15, 28, 0.58);
+    backdrop-filter: blur(12px);
+    color: rgba(247, 251, 255, 0.92);
+    text-align: center;
+    max-width: min(250px, 85vw);
+    transform: translate(-50%, 10px) scale(0.96);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.funFactHeader {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(59, 130, 246, 0.9);
+    margin-bottom: 3px;
+}
+
+.funFactText {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.2;
+}
+
+@media (min-width: 481px) {
+    .sunFact {
+        top: calc(50% + 82px);
+        padding: 0.7rem 0.95rem;
+        max-width: min(260px, 75vw);
+    }
+
+    .funFactHeader {
+        font-size: 0.68rem;
+        margin-bottom: 4px;
+    }
+
+    .funFactText {
+        font-size: 0.78rem;
+        line-height: 1.25;
+    }
+}
+
+.sunFactVisible {
+    animation: factPop 1100ms ease-out;
+}
+
 .orbitOne,
 .orbitTwo,
 .orbitThree,
 .orbitFour,
 .orbitFive,
 .orbitSix,
-.orbitSeven {
+.orbitSeven,
+.orbitEight {
     position: absolute;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.11);
@@ -111,6 +327,13 @@
     height: min(84vw, 270px);
     animation-duration: 30s;
     animation-delay: -11s;
+}
+
+.orbitEight {
+    width: min(92vw, 300px);
+    height: min(92vw, 300px);
+    animation-duration: 38s;
+    animation-delay: -22s;
 }
 
 .planet {
@@ -174,6 +397,13 @@
     box-shadow: 0 0 14px rgba(141, 225, 242, 0.2);
 }
 
+.planetEight {
+    width: 9px;
+    height: 9px;
+    background: linear-gradient(135deg, #c7d2fe, #8b9cfb 52%, #5160d4 100%);
+    box-shadow: 0 0 12px rgba(139, 156, 251, 0.2);
+}
+
 .stars {
     position: absolute;
     inset: 0;
@@ -235,7 +465,10 @@
     .orbitFive,
     .orbitSix,
     .orbitSeven,
+    .orbitEight,
     .sun,
+    .sunBurst,
+    .sunFact,
     .stars span {
         will-change: transform, opacity;
     }
@@ -262,6 +495,60 @@
     }
 }
 
+@keyframes flareBurst {
+    0% {
+        opacity: 0;
+        transform: scale(0.62);
+    }
+
+    18% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.12);
+    }
+}
+
+@keyframes flareRay {
+    0% {
+        transform: translate(-50%, -50%) rotate(var(--ray-angle, 0deg)) scaleY(0.25);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(var(--ray-angle, 0deg)) scaleY(1);
+        opacity: 0;
+    }
+}
+
+@keyframes factPop {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 12px) scale(0.94);
+    }
+
+    18% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+    }
+
+    78% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -2px) scale(0.98);
+    }
+}
+
 @keyframes twinkle {
     0%,
     100% {
@@ -283,7 +570,10 @@
     .orbitFive,
     .orbitSix,
     .orbitSeven,
+    .orbitEight,
     .sun,
+    .sunBurst,
+    .sunFact,
     .stars span {
         animation: none;
     }
@@ -302,6 +592,16 @@
     .sun {
         width: 92px;
         height: 92px;
+    }
+
+    .sunBurst {
+        width: 204px;
+        height: 204px;
+    }
+
+    .sunFact {
+        top: calc(50% + 102px);
+        max-width: min(280px, 75vw);
     }
 
     .orbitOne {
@@ -338,8 +638,87 @@
         width: min(70vw, 320px);
         height: min(70vw, 320px);
     }
+
+    .orbitEight {
+        width: min(78vw, 350px);
+        height: min(78vw, 350px);
+    }
     .heroVisual {
         min-height: 460px;
+    }
+}
+
+@media (max-width: 640px) {
+    .heroVisual {
+        min-height: 400px;
+    }
+
+    .solarSystem {
+        inset: 14px;
+    }
+
+    .sun {
+        width: 68px;
+        height: 68px;
+    }
+
+    .sunBurst {
+        width: 152px;
+        height: 152px;
+    }
+
+    .sunFact {
+        top: calc(50% + 88px);
+        max-width: min(240px, 78vw);
+        padding: 9px 12px;
+    }
+
+    .funFactHeader {
+        font-size: 0.64rem;
+    }
+
+    .funFactText {
+        font-size: 0.72rem;
+    }
+
+    .orbitOne {
+        width: min(22vw, 96px);
+        height: min(22vw, 96px);
+    }
+
+    .orbitTwo {
+        width: min(30vw, 124px);
+        height: min(30vw, 124px);
+    }
+
+    .orbitThree {
+        width: min(38vw, 154px);
+        height: min(38vw, 154px);
+    }
+
+    .orbitFour {
+        width: min(46vw, 184px);
+        height: min(46vw, 184px);
+    }
+
+    .orbitFive {
+        width: min(54vw, 214px);
+        height: min(54vw, 214px);
+    }
+
+    .orbitSix {
+        width: min(62vw, 244px);
+        height: min(62vw, 244px);
+    }
+
+    .orbitSeven {
+        width: min(70vw, 274px);
+        height: min(70vw, 274px);
+    }
+
+    .orbitEight {
+        width: min(78vw, 304px);
+        height: min(78vw, 304px);
     }
 }
 
@@ -347,5 +726,9 @@
     .heroVisual {
         min-height: 560px;
         border-radius: 32px;
+    }
+
+    .sunFact {
+        top: calc(50% + 102px);
     }
 }
