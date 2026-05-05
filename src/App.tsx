@@ -1,8 +1,8 @@
 import styles from './app.module.css';
-import solarStyles from './solar_system.module.css';
-import { createSignal, type Component } from 'solid-js';
+import { type Component } from 'solid-js';
 import Navbar from './Navbar/Navbar';
 import GlassBox from './GlassBox/GlassBox';
+import SolarSystem from './SolarSystem/SolarSystem';
 import {
   BiLogosTypescript,
   BiLogosHtml5,
@@ -25,48 +25,7 @@ import {
   SiSolid
 } from 'solid-icons/si'
 
-const solarFacts = [
-  'The Sun contains 99.86% of the solar system\'s mass.',
-  'Sunlight takes about 8 minutes to reach Earth.',
-  'Mercury is the smallest planet in our solar system',
-  'Venus orbits backwards compared to the other planets',
-  'Earth is where we are',
-  'Mars has the tallest volcano in the solar system, 3 times larger than Mt. Everest',
-  'Jupiter is the largest planet and the fastest spinning, doing 1 full rotation in 10 hours',
-  'The density of Saturn is so low that it could theoretically float on water',
-  'Uranus orbits sideways compared to other planets',
-  'Neptune was discovered with math before telescopes'
-];
-
 const App: Component = () => {
-  const [sunFlare, setSunFlare] = createSignal(false);
-  const [sunClickCount, setSunClickCount] = createSignal(0);
-  const [showFact, setShowFact] = createSignal(false);
-  let flareTimer: ReturnType<typeof setTimeout> | undefined;
-  let factTimer: ReturnType<typeof setTimeout> | undefined;
-
-  const handleSunClick = () => {
-    setSunClickCount((count) => count + 1);
-    
-    // Reset and retrigger the fact animation
-    setShowFact(false);
-    
-    // Trigger flare
-    setSunFlare(true);
-    if (flareTimer) clearTimeout(flareTimer);
-    flareTimer = setTimeout(() => {
-      setSunFlare(false);
-    }, 1100);
-    
-    // Show fact with a tiny delay to ensure animation resets
-    if (factTimer) clearTimeout(factTimer);
-    setTimeout(() => {
-      setShowFact(true);
-      factTimer = setTimeout(() => {
-        setShowFact(false);
-      }, 1100);
-    }, 10);
-  };
 
   return (
     <main class={styles.pageShell}>
@@ -86,68 +45,7 @@ const App: Component = () => {
             </a>
           </div>
         </div>
-        <div class={solarStyles.heroVisual}>
-          <div class={solarStyles.solarSystem}>
-            <div class={solarStyles.solarGlow} />
-            <div class={solarStyles.sunBurst} classList={{ [solarStyles.sunBurstActive]: sunFlare() }} aria-hidden="true">
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-            <button
-              type="button"
-              class={solarStyles.sunButton}
-              classList={{ [solarStyles.sunActive]: sunFlare() }}
-              aria-label="Trigger a solar flare"
-              aria-pressed={sunFlare()}
-              onClick={handleSunClick}
-            >
-              <span class={solarStyles.sun} />
-            </button>
-            <div class={solarStyles.sunFact} classList={{ [solarStyles.sunFactVisible]: showFact() }} aria-live="polite">
-              <div class={solarStyles.funFactHeader}>Fun Fact</div>
-              <p class={solarStyles.funFactText}>
-                {solarFacts[sunClickCount() % solarFacts.length]}
-              </p>
-            </div>
-            <div class={solarStyles.orbitOne}>
-              <span class={`${solarStyles.planet} ${solarStyles.planetOne}`} />
-            </div>
-            <div class={solarStyles.orbitTwo}>
-              <span class={`${solarStyles.planet} ${solarStyles.planetTwo}`} />
-            </div>
-            <div class={solarStyles.orbitThree}>
-              <span class={`${solarStyles.planet} ${solarStyles.planetThree}`} />
-            </div>
-            <div class={solarStyles.orbitFour}>
-              <span class={`${solarStyles.planet} ${solarStyles.planetFour}`} />
-            </div>
-            <div class={solarStyles.orbitFive}>
-              <span class={`${solarStyles.planet} ${solarStyles.planetFive}`} />
-            </div>
-            <div class={solarStyles.orbitSix}>
-              <span class={`${solarStyles.planet} ${solarStyles.planetSix}`} />
-            </div>
-            <div class={solarStyles.orbitSeven}>
-              <span class={`${solarStyles.planet} ${solarStyles.planetSeven}`} />
-            </div>
-            <div class={solarStyles.orbitEight}>
-              <span class={`${solarStyles.planet} ${solarStyles.planetEight}`} />
-            </div>
-            <div class={solarStyles.stars}>
-              <span class={solarStyles.starA} />
-              <span class={solarStyles.starB} />
-              <span class={solarStyles.starC} />
-              <span class={solarStyles.starD} />
-              <span class={solarStyles.starE} />
-            </div>
-          </div>
-        </div>
+        <SolarSystem />
       </section>
       <section id="work_projects" class={`${styles.section} ${styles.workSection}`}>
         <h2 class={styles.sectionTitle}>Work Projects</h2>
@@ -192,7 +90,7 @@ const App: Component = () => {
           />
           <GlassBox
             projectName='Beatles Through Data'
-            projectDescription='This project was for my scientific data analysis class and required the use of several Python data libraries such as numpy, pandas and matplot lib. The project involved us finding a dataset and seeing what kind of conclusions you can interpolate from the data. I am a big Beatles fan and I found a dataset that fit the assignment perfectly, so I decided to see if you could see the breakup of the Beatles happening through their music.'
+            projectDescription='This project was for my scientific data analysis class and required the use of several Python data libraries such as numpy, pandas and matplotlib. The project involved us finding a dataset and seeing what kind of conclusions you can interpolate from the data. I am a big Beatles fan and I found a dataset that fit the assignment perfectly, so I decided to see if you could see the breakup of the Beatles happening through their music.'
             githubLink='https://github.com/BenJenkyn/beatles-through-data/blob/main/assignment1.ipynb'
             techStack={[
               { icon: <BiLogosPython size="32px" />, name: "Python" },
@@ -215,7 +113,7 @@ const App: Component = () => {
           />
           <GlassBox
             projectName='Wordle Assist'
-            projectDescription='This was a project I built because I was having a lot of fun with Wordle at the time and thought it would be fun to make a website to assist people in solving the daily challenge. At the same time I wanted to try out a web framework I had heard about called Svelte. This project combined those two interests will help you get the word of the day very easily.'
+            projectDescription='This was a project I built because I was having a lot of fun with Wordle at the time and thought it would be fun to make a website to assist people in solving the daily challenge. At the same time I wanted to try out a web framework I had heard about called Svelte. This project combines those two interests and will help you get the word of the day very easily.'
             websiteLink='https://wordle-guesser-76749.web.app/'
             githubLink='https://github.com/BenJenkyn/wordle_guesser'
             techStack={[
@@ -225,7 +123,7 @@ const App: Component = () => {
           />
           <GlassBox
             projectName='This Portfolio'
-            projectDescription='I built this portfolio in part to show off some of the many projects I have worked on both in and out of my career but also as a fun challenge to myself to try and build something interesting. I wanted to use solid js because it seems like it offers the same type of performance benefits as Svelete while using JSX and being similar to React. I hope you liked it!'
+            projectDescription='I built this portfolio in part to show off some of the many projects I have worked on both in and out of my career but also as a fun challenge to myself to try and build something interesting. I wanted to use SolidJS because it seems like it offers the same type of performance benefits as Svelte while using JSX and being similar to React. I hope you liked it!'
             githubLink='https://github.com/BenJenkyn/portfolio'
             techStack={[
               { icon: <SiSolid size="32px" />, name: "SolidJS" },

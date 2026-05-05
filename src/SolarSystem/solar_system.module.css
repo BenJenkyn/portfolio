@@ -263,7 +263,7 @@
 }
 
 .sunFactVisible {
-    animation: factPop 1100ms ease-out;
+    animation: factPop 3500ms ease-out;
 }
 
 .orbitOne,
