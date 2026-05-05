@@ -64,7 +64,7 @@ const App: Component = () => {
       setShowFact(true);
       factTimer = setTimeout(() => {
         setShowFact(false);
-      }, 1100);
+      }, 3500);
     }, 10);
   };
 
