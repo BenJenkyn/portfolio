@@ -32,7 +32,7 @@ type TechStack = {
  */
 type GlassBoxProps = {
     projectName: string;
-    projectDescription: string;
+    projectDescription: string | JSX.Element;
     websiteLink?: string;
     githubLink?: string;
     techStack?: TechStack[];
