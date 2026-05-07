@@ -219,6 +219,20 @@
         animation: riseIn 900ms ease-out both;
         animation-delay: 100ms;
     }
+
+    /* Scroll-triggered animations for non-hero sections */
+    .section.inView:not(.hero) {
+        animation: riseIn 700ms ease-out both;
+    }
+
+    .section.inView:not(.hero) .sectionTitle {
+        animation: riseIn 700ms ease-out both;
+    }
+
+    .section.inView:not(.hero) .glassBoxSection {
+        animation: riseIn 800ms ease-out both;
+        animation-delay: 100ms;
+    }
 }
 
 @media (min-width: 768px) {

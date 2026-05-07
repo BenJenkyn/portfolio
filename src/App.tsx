@@ -12,7 +12,7 @@
  */
 
 import styles from './app.module.css';
-import { type Component } from 'solid-js';
+import { type Component, onMount, onCleanup } from 'solid-js';
 import Navbar from './Navbar/Navbar';
 import GlassBox from './GlassBox/GlassBox';
 import SolarSystem from './SolarSystem/SolarSystem';
@@ -39,6 +39,35 @@ import {
 } from 'solid-icons/si';
 
 const App: Component = () => {
+  onMount(() => {
+    // Set up Intersection Observer for scroll-triggered animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1, // Trigger when 10% of the section is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Add the in-view class to trigger animation
+          entry.target.classList.add(styles.inView);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections with the section class (except hero which animates on load)
+    const sections = document.querySelectorAll(`.${styles.section}:not(.${styles.hero})`);
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Clean up observer on unmount
+    onCleanup(() => {
+      observer.disconnect();
+    });
+  });
+
   return (
     <main class={styles.pageShell}>
       {/* Hero section: Introduction and visual branding */}
