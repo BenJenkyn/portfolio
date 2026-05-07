@@ -69,6 +69,17 @@ const App: Component = () => {
 
     let animationFrameId = 0;
 
+    const updatePersonalPadding = () => {
+      const personal = document.getElementById('personal_projects');
+      const navEl = document.querySelector('nav');
+      if (personal && navEl instanceof HTMLElement) {
+        const navHeight = navEl.offsetHeight;
+        const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+        const extraGap = rootFontSize * 0.25; // 1rem total
+        personal.style.paddingBottom = `${navHeight + extraGap}px`;
+      }
+    };
+
     const updateFooterTopInViewport = () => {
       animationFrameId = 0;
 
@@ -90,10 +101,12 @@ const App: Component = () => {
     };
 
     scheduleFooterTopUpdate();
+    updatePersonalPadding();
     window.addEventListener('scroll', scheduleFooterTopUpdate, {
       passive: true,
     });
     window.addEventListener('resize', scheduleFooterTopUpdate);
+    window.addEventListener('resize', updatePersonalPadding);
 
     // Clean up observer on unmount
     onCleanup(() => {
@@ -104,6 +117,7 @@ const App: Component = () => {
       observer.disconnect();
       window.removeEventListener('scroll', scheduleFooterTopUpdate);
       window.removeEventListener('resize', scheduleFooterTopUpdate);
+      window.removeEventListener('resize', updatePersonalPadding);
     });
   });
 
