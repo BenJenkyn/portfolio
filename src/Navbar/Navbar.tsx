@@ -78,7 +78,9 @@ const Navbar: Component<NavbarProps> = (props) => {
     const distanceFromFooterTopToViewportBottom = window.innerHeight - footerTop;
     const desiredOffset = distanceFromFooterTopToViewportBottom + gapPx;
 
-    const footerAwareBottomOffset = Math.max(baseBottomOffset, Math.round(desiredOffset));
+    // Snap to a small step so the navbar doesn't jitter on 1px scroll changes.
+    const snappedOffset = Math.round(desiredOffset / 4) * 4;
+    const footerAwareBottomOffset = Math.max(baseBottomOffset, snappedOffset);
 
     setBottomOffset(`${footerAwareBottomOffset}px`);
   };
