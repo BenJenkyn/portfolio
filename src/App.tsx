@@ -247,6 +247,25 @@ const App: Component = () => {
 
       {/* Navigation: Sticky navbar with active section indicator and smooth scrolling */}
       <Navbar />
+
+      {/* Footer section with project and social links */}
+      <footer class={styles.footer}>
+        <div class={styles.footerContent}>
+          <p class={styles.footerText}>
+            Built with SolidJS & TypeScript
+          </p>
+          <a
+            href="https://github.com/BenJenkyn/portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            class={styles.footerLink}
+            aria-label="View source code on GitHub"
+          >
+            <BiLogosGithub size="20px" />
+            View Source
+          </a>
+        </div>
+      </footer>
     </main>
   );
 };
