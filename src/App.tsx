@@ -138,7 +138,7 @@ const App: Component = () => {
             projectDescription={
               <>
                 This was the final project for my Interactive Media class where
-                me and my groupmate were given free range to make any type of
+                my groupmate and I were given free range to make any type of
                 video game we wanted in Godot. The requirements were that it
                 needed a core loop, three distinct mechanics, a clear
                 progression, a win/lose state and some level of UI polish. The
