@@ -290,6 +290,9 @@ const App: Component = () => {
       >
         <div class={styles.footerContent}>
           <p class={styles.footerText}>
+            Hint: Click on the sun
+          </p>
+          <p class={styles.footerText}>
             Built with SolidJS & TypeScript
           </p>
           <a
