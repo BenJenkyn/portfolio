@@ -12,7 +12,7 @@
  */
 
 import styles from './app.module.css';
-import { type Component } from 'solid-js';
+import { type Component, createSignal, onMount, onCleanup } from 'solid-js';
 import Navbar from './Navbar/Navbar';
 import GlassBox from './GlassBox/GlassBox';
 import SolarSystem from './SolarSystem/SolarSystem';
@@ -39,6 +39,88 @@ import {
 } from 'solid-icons/si';
 
 const App: Component = () => {
+  let footerElement!: HTMLElement;
+  const [footerTopInViewport, setFooterTopInViewport] = createSignal<
+    number | null
+  >(null);
+
+  onMount(() => {
+    // Set up Intersection Observer for scroll-triggered animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1, // Trigger when 10% of the section is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Add the in-view class to trigger animation
+          entry.target.classList.add(styles.inView);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections with the section class (except hero which animates on load)
+    const sections = document.querySelectorAll(`.${styles.section}:not(.${styles.hero})`);
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    let animationFrameId = 0;
+
+    const updatePersonalPadding = () => {
+      const personal = document.getElementById('personal_projects');
+      const navEl = document.querySelector('nav');
+      if (personal && navEl instanceof HTMLElement) {
+        const navHeight = navEl.offsetHeight;
+        const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+        const extraGap = rootFontSize * 0.25; // 1rem total
+        personal.style.paddingBottom = `${navHeight + extraGap}px`;
+      }
+    };
+
+    const updateFooterTopInViewport = () => {
+      animationFrameId = 0;
+
+      if (!footerElement) {
+        return;
+      }
+
+      setFooterTopInViewport(footerElement.getBoundingClientRect().top);
+    };
+
+    const scheduleFooterTopUpdate = () => {
+      if (animationFrameId !== 0) {
+        return;
+      }
+
+      animationFrameId = window.requestAnimationFrame(
+        updateFooterTopInViewport,
+      );
+    };
+
+    scheduleFooterTopUpdate();
+    updatePersonalPadding();
+    window.addEventListener('scroll', scheduleFooterTopUpdate, {
+      passive: true,
+    });
+    window.addEventListener('resize', scheduleFooterTopUpdate);
+    window.addEventListener('resize', updatePersonalPadding);
+
+    // Clean up observer on unmount
+    onCleanup(() => {
+      if (animationFrameId !== 0) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
+
+      observer.disconnect();
+      window.removeEventListener('scroll', scheduleFooterTopUpdate);
+      window.removeEventListener('resize', scheduleFooterTopUpdate);
+      window.removeEventListener('resize', updatePersonalPadding);
+    });
+  });
+
   return (
     <main class={styles.pageShell}>
       {/* Hero section: Introduction and visual branding */}
@@ -138,7 +220,7 @@ const App: Component = () => {
             projectDescription={
               <>
                 This was the final project for my Interactive Media class where
-                me and my groupmate were given free range to make any type of
+                my groupmate and I were given free range to make any type of
                 video game we wanted in Godot. The requirements were that it
                 needed a core loop, three distinct mechanics, a clear
                 progression, a win/lose state and some level of UI polish. The
@@ -204,20 +286,41 @@ const App: Component = () => {
               { icon: <BiLogosTypescript size="32px" />, name: 'TypeScript' },
             ]}
           />
-          <GlassBox
-            projectName="This Portfolio"
-            projectDescription="I built this portfolio in part to show off some of the many projects I have worked on both in and out of my career but also as a fun challenge to myself to try and build something interesting. I wanted to use SolidJS because it seems like it offers the same type of performance benefits as Svelte while using JSX and being similar to React. I hope you liked it!"
-            githubLink="https://github.com/BenJenkyn/portfolio"
-            techStack={[
-              { icon: <SiSolid size="32px" />, name: 'SolidJS' },
-              { icon: <BiLogosTypescript size="32px" />, name: 'TypeScript' },
-            ]}
-          />
         </div>
       </section>
 
       {/* Navigation: Sticky navbar with active section indicator and smooth scrolling */}
-      <Navbar />
+      <Navbar footerTopInViewport={footerTopInViewport()} />
+
+      {/* Footer section with project and social links */}
+      <footer
+        ref={footerElement}
+        class={styles.footer}
+        data-top-in-viewport={
+          footerTopInViewport() === null
+            ? undefined
+            : Math.round(footerTopInViewport() as number)
+        }
+      >
+        <div class={styles.footerContent}>
+          <p class={styles.footerText}>
+            Hint: Click on the sun
+          </p>
+          <p class={styles.footerText}>
+            Built with SolidJS & TypeScript
+          </p>
+          <a
+            href="https://github.com/BenJenkyn/portfolio"
+            target="_blank"
+            rel="noopener noreferrer"
+            class={styles.footerLink}
+            aria-label="View source code on GitHub"
+          >
+            <BiLogosGithub size="20px" />
+            View Source
+          </a>
+        </div>
+      </footer>
     </main>
   );
 };
