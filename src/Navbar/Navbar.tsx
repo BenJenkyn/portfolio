@@ -13,7 +13,7 @@
  * or can be manually set by clicking navigation links.
  */
 
-import { Component, createSignal, onMount, onCleanup, createEffect, For } from "solid-js";
+import { Component, createSignal, onMount, onCleanup, createEffect, For } from 'solid-js';
 import { BiSolidHome } from "solid-icons/bi";
 import styles from './navbar.module.css'
 
@@ -31,6 +31,10 @@ interface SectionConfig {
   targetId: string;
 }
 
+interface NavbarProps {
+  footerTopInViewport: number | null;
+}
+
 /**
  * Navigation section definitions with their display labels and target element IDs.
  */
@@ -41,17 +45,39 @@ const sections: SectionConfig[] = [
   { id: 'personal', label: 'Personal', targetId: 'personal_projects' },
 ];
 
-const Navbar: Component = () => {
+const Navbar: Component<NavbarProps> = (props) => {
   // State: Currently active section
   const [activeSection, setActiveSection] = createSignal<Section>('home');
   // State: CSS positioning for the active section indicator line
   const [indicatorStyle, setIndicatorStyle] = createSignal({ left: '0px', width: '0px' });
+  // State: Fixed bottom offset that expands upward when the footer reaches the navbar.
+  const [bottomOffset, setBottomOffset] = createSignal('0.25rem');
   // Flag to distinguish user scroll from programmatic scroll (prevents double-triggering)
   let isProgrammaticScroll = false;
   // DOM references for the navbar and navigation items
   let navRef: HTMLElement | undefined;
   let itemRefs: Record<Section, HTMLElement> = {} as Record<Section, HTMLElement>;
   let scrollTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+  const getBaseBottomOffset = () =>
+    window.matchMedia('(min-width: 381px)').matches ? 8 : 4;
+
+  const updateBottomOffset = () => {
+    const footerTop = props.footerTopInViewport;
+    const baseBottomOffset = getBaseBottomOffset();
+
+    if (footerTop === null) {
+      setBottomOffset(`${baseBottomOffset}px`);
+      return;
+    }
+
+    const footerAwareBottomOffset = Math.max(
+      baseBottomOffset,
+      window.innerHeight - footerTop,
+    );
+
+    setBottomOffset(`${footerAwareBottomOffset}px`);
+  };
 
   /**
    * Marks the scroll as programmatic (user clicked a nav link).
@@ -115,8 +141,10 @@ const Navbar: Component = () => {
   onMount(() => {
     // Initialize indicator position on mount
     updateIndicator();
+    updateBottomOffset();
     // Recalculate indicator on window resize
     window.addEventListener('resize', updateIndicator);
+    window.addEventListener('resize', updateBottomOffset);
 
     /**
      * Intersection Observer Configuration:
@@ -154,14 +182,16 @@ const Navbar: Component = () => {
     // Cleanup: Remove listeners and stop observing on component unmount
     onCleanup(() => {
       window.removeEventListener('resize', updateIndicator);
+      window.removeEventListener('resize', updateBottomOffset);
       observer.disconnect();
     });
   });
 
   createEffect(updateIndicator);
+  createEffect(updateBottomOffset);
 
   return (
-    <nav class={styles.navbar} ref={navRef}>
+    <nav class={styles.navbar} ref={navRef} style={{ bottom: bottomOffset() }}>
       {/* Animated indicator line that follows the active nav item */}
       <div class={styles.indicatorBackground} style={{
         left: indicatorStyle().left,

@@ -12,7 +12,7 @@
  */
 
 import styles from './app.module.css';
-import { type Component, onMount, onCleanup } from 'solid-js';
+import { type Component, createSignal, onMount, onCleanup } from 'solid-js';
 import Navbar from './Navbar/Navbar';
 import GlassBox from './GlassBox/GlassBox';
 import SolarSystem from './SolarSystem/SolarSystem';
@@ -39,6 +39,11 @@ import {
 } from 'solid-icons/si';
 
 const App: Component = () => {
+  let footerElement!: HTMLElement;
+  const [footerTopInViewport, setFooterTopInViewport] = createSignal<
+    number | null
+  >(null);
+
   onMount(() => {
     // Set up Intersection Observer for scroll-triggered animations
     const observerOptions = {
@@ -62,9 +67,43 @@ const App: Component = () => {
       observer.observe(section);
     });
 
+    let animationFrameId = 0;
+
+    const updateFooterTopInViewport = () => {
+      animationFrameId = 0;
+
+      if (!footerElement) {
+        return;
+      }
+
+      setFooterTopInViewport(footerElement.getBoundingClientRect().top);
+    };
+
+    const scheduleFooterTopUpdate = () => {
+      if (animationFrameId !== 0) {
+        return;
+      }
+
+      animationFrameId = window.requestAnimationFrame(
+        updateFooterTopInViewport,
+      );
+    };
+
+    scheduleFooterTopUpdate();
+    window.addEventListener('scroll', scheduleFooterTopUpdate, {
+      passive: true,
+    });
+    window.addEventListener('resize', scheduleFooterTopUpdate);
+
     // Clean up observer on unmount
     onCleanup(() => {
+      if (animationFrameId !== 0) {
+        window.cancelAnimationFrame(animationFrameId);
+      }
+
       observer.disconnect();
+      window.removeEventListener('scroll', scheduleFooterTopUpdate);
+      window.removeEventListener('resize', scheduleFooterTopUpdate);
     });
   });
 
@@ -246,10 +285,18 @@ const App: Component = () => {
       </section>
 
       {/* Navigation: Sticky navbar with active section indicator and smooth scrolling */}
-      <Navbar />
+      <Navbar footerTopInViewport={footerTopInViewport()} />
 
       {/* Footer section with project and social links */}
-      <footer class={styles.footer}>
+      <footer
+        ref={footerElement}
+        class={styles.footer}
+        data-top-in-viewport={
+          footerTopInViewport() === null
+            ? undefined
+            : Math.round(footerTopInViewport() as number)
+        }
+      >
         <div class={styles.footerContent}>
           <p class={styles.footerText}>
             Built with SolidJS & TypeScript
