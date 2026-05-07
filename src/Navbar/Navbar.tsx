@@ -71,10 +71,14 @@ const Navbar: Component<NavbarProps> = (props) => {
       return;
     }
 
-    const footerAwareBottomOffset = Math.max(
-      baseBottomOffset,
-      window.innerHeight - footerTop,
-    );
+    // Convert 0.5rem to pixels so we can add a consistent gap above the footer.
+    const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const gapPx = rootFontSize * 0.5; // 0.5rem in px
+
+    const distanceFromFooterTopToViewportBottom = window.innerHeight - footerTop;
+    const desiredOffset = distanceFromFooterTopToViewportBottom + gapPx;
+
+    const footerAwareBottomOffset = Math.max(baseBottomOffset, Math.round(desiredOffset));
 
     setBottomOffset(`${footerAwareBottomOffset}px`);
   };
