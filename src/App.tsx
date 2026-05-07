@@ -272,15 +272,6 @@ const App: Component = () => {
               { icon: <BiLogosTypescript size="32px" />, name: 'TypeScript' },
             ]}
           />
-          <GlassBox
-            projectName="This Portfolio"
-            projectDescription="I built this portfolio in part to show off some of the many projects I have worked on both in and out of my career but also as a fun challenge to myself to try and build something interesting. I wanted to use SolidJS because it seems like it offers the same type of performance benefits as Svelte while using JSX and being similar to React. I hope you liked it!"
-            githubLink="https://github.com/BenJenkyn/portfolio"
-            techStack={[
-              { icon: <SiSolid size="32px" />, name: 'SolidJS' },
-              { icon: <BiLogosTypescript size="32px" />, name: 'TypeScript' },
-            ]}
-          />
         </div>
       </section>
 
