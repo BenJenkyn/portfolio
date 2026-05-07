@@ -236,10 +236,6 @@
 }
 
 @media (min-width: 768px) {
-    .section {
-        padding-block: 6rem;
-    }
-
     .pageShell {
         padding: 2rem;
     }
