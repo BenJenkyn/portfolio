@@ -3,6 +3,8 @@
     display: flex;
     flex-direction: column;
     padding-block: 2rem;
+    max-width: 1920px;
+    margin: auto;
 }
 
 .pageShell {
